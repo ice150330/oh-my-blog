@@ -1,0 +1,284 @@
+// ============================================================
+// Demo: kdd-b-v3 KDD竞赛数据分析系统
+// 技术栈: Vue3 + Element Plus + LightningCSS + ECharts
+// 兼容性: Chrome 60+, Firefox 60+, Safari 12+, Edge 79+
+// 特征: Element Plus 组件库、LightningCSS 原子化样式、数据大屏
+// ============================================================
+
+@use 'common' as *;
+
+// --------------------------------------------------------
+// 根容器
+// --------------------------------------------------------
+.demo-kdd-b-v3 {
+  @extend .demo-page-root;
+
+  // 全屏布局
+  html,
+  body,
+  #app {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  > #app {
+    height: 100vh;
+    height: 100dvh;
+  }
+
+  // --------------------------------------------------------
+  // Element Plus 变量兼容（从构建产物中提取）
+  // --------------------------------------------------------
+
+  // 颜色变量
+  --el-color-primary: #409eff;
+  --el-color-success: #67c23a;
+  --el-color-warning: #e6a23c;
+  --el-color-danger: #f56c6c;
+  --el-color-error: #f56c6c;
+  --el-color-info: #909399;
+
+  --el-color-primary-light-3: #79bbff;
+  --el-color-primary-light-5: #a0cfff;
+  --el-color-success-light-3: #95d475;
+  --el-color-warning-light-3: #eebe77;
+  --el-color-danger-light-3: #f89898;
+
+  // 文字颜色
+  --el-text-color-primary: #303133;
+  --el-text-color-regular: #606266;
+  --el-text-color-secondary: #909399;
+  --el-text-color-placeholder: #a8abb2;
+
+  // 背景颜色
+  --el-bg-color: #fff;
+  --el-bg-color-page: #f2f3f5;
+  --el-bg-color-overlay: #fff;
+
+  // 边框颜色
+  --el-border-color: #dcdfe6;
+  --el-border-color-light: #e4e7ed;
+
+  // 字体
+  --el-font-family: 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB',
+    'Microsoft YaHei', '微软雅黑', Arial, sans-serif;
+
+  // 过渡
+  --el-transition-duration: 0.3s;
+  --el-transition-function-ease-in-out-bezier: cubic-bezier(0.645, 0.045, 0.355, 1);
+
+  // --------------------------------------------------------
+  // Element Plus 组件覆盖
+  // --------------------------------------------------------
+
+  // 过渡动画
+  .fade-in-linear-enter-active,
+  .fade-in-linear-leave-active {
+    transition: opacity var(--el-transition-duration) linear;
+  }
+
+  .fade-in-linear-enter-from,
+  .fade-in-linear-leave-to {
+    opacity: 0;
+  }
+
+  .el-fade-in-linear-enter-active,
+  .el-fade-in-linear-leave-active {
+    transition: opacity var(--el-transition-duration) linear;
+  }
+
+  .el-fade-in-linear-enter-from,
+  .el-fade-in-linear-leave-to {
+    opacity: 0;
+  }
+
+  // 卡片
+  .el-card {
+    --el-card-border-radius: 4px;
+    border-radius: 4px;
+    border: 1px solid var(--el-border-color-light, #e4e7ed);
+    background-color: var(--el-bg-color, #fff);
+  }
+
+  // 按钮
+  .el-button {
+    --el-button-border-radius: 4px;
+    border-radius: 4px;
+  }
+
+  // 输入框
+  .el-input__wrapper {
+    border-radius: 4px;
+  }
+
+  // 表格
+  .el-table {
+    --el-table-border-color: var(--el-border-color-light, #e4e7ed);
+  }
+
+  // --------------------------------------------------------
+  // 布局容器
+  // --------------------------------------------------------
+  &__container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    height: 100dvh;
+  }
+
+  &__header {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    height: 56px;
+    background: var(--el-bg-color, #fff);
+    border-bottom: 1px solid var(--el-border-color-light, #e4e7ed);
+  }
+
+  &__main {
+    flex: 1;
+    display: flex;
+    overflow: hidden;
+  }
+
+  &__sidebar {
+    width: 220px;
+    flex-shrink: 0;
+    background: #1e293b;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+
+    @include demo-mobile {
+      position: fixed;
+      left: 0;
+      top: 56px;
+      bottom: 0;
+      z-index: 100;
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
+
+      &.is-open {
+        transform: translateX(0);
+      }
+    }
+  }
+
+  &__content {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 20px;
+    background: var(--el-bg-color-page, #f2f3f5);
+
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: #c0c4cc;
+      border-radius: 3px;
+    }
+
+    scrollbar-width: thin;
+    scrollbar-color: #c0c4cc transparent;
+  }
+
+  // --------------------------------------------------------
+  // 统计卡片
+  // --------------------------------------------------------
+  &__stat-card {
+    @extend .demo-stat;
+    background: var(--el-bg-color, #fff);
+    border-radius: 4px;
+    padding: 16px;
+    border: 1px solid var(--el-border-color-light, #e4e7ed);
+  }
+
+  &__stat-label {
+    @extend .demo-stat__label;
+  }
+
+  &__stat-value {
+    @extend .demo-stat__value;
+  }
+
+  &__stat-unit {
+    @extend .demo-stat__unit;
+  }
+
+  // --------------------------------------------------------
+  // 大数字统计
+  // --------------------------------------------------------
+  &__big-stat {
+    @extend .demo-big-stat;
+
+    &--blue { color: var(--el-color-primary, #409eff); }
+    &--success { color: var(--el-color-success, #67c23a); }
+    &--warning { color: var(--el-color-warning, #e6a23c); }
+    &--danger { color: var(--el-color-danger, #f56c6c); }
+  }
+
+  &__big-stat-label {
+    @extend .demo-big-stat__label;
+  }
+
+  // --------------------------------------------------------
+  // 图表容器
+  // --------------------------------------------------------
+  &__chart-container {
+    @extend .demo-chart;
+    background: var(--el-bg-color, #fff);
+    border-radius: 4px;
+    padding: 16px;
+    border: 1px solid var(--el-border-color-light, #e4e7ed);
+
+    &--lg { @extend .demo-chart--lg; }
+    &--xl { @extend .demo-chart--xl; }
+    &--sm { @extend .demo-chart--sm; }
+  }
+
+  // --------------------------------------------------------
+  // 区块
+  // --------------------------------------------------------
+  &__section {
+    @extend .demo-section;
+  }
+
+  // --------------------------------------------------------
+  // 描述文本
+  // --------------------------------------------------------
+  &__desc {
+    @extend .demo-desc;
+  }
+
+  // --------------------------------------------------------
+  // 响应式适配
+  // --------------------------------------------------------
+  @include demo-mobile {
+    &__header {
+      padding: 0 12px;
+      height: 48px;
+    }
+
+    &__content {
+      padding: 12px;
+    }
+
+    :deep(.el-col-6) {
+      width: 50%;
+    }
+
+    :deep(.el-col-12) {
+      width: 100%;
+      margin-bottom: 16px;
+    }
+  }
+}

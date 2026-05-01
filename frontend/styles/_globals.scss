@@ -1,0 +1,116 @@
+// ============================================================
+// 六、全局基础样式
+// ============================================================
+
+// 平滑滚动
+html {
+  scroll-behavior: smooth;
+}
+
+// 全局盒模型
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+// 页面根元素
+body {
+  font-family: var(--font-body);
+  font-size: var(--font-size-body);
+  line-height: 1.6;
+  color: var(--color-foreground);
+  background: var(--color-background);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color var(--duration-normal), color var(--duration-normal);
+}
+
+// 代码字体覆盖
+code,
+kbd,
+pre,
+samp {
+  font-family: var(--font-code);
+}
+
+// 链接样式
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color var(--duration-fast);
+
+  &:hover {
+    color: var(--color-primary-light);
+  }
+}
+
+// 图片默认响应式
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+// 按钮重置
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+// 列表重置
+ul,
+ol {
+  list-style: none;
+}
+
+// 输入框基础
+input,
+textarea,
+select {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-sm) var(--space-md);
+  transition: border-color var(--duration-fast), box-shadow var(--duration-fast);
+
+  &:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+  }
+}
+
+// 容器工具类
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+}
+
+.container-narrow {
+  width: 100%;
+  max-width: var(--container-narrow);
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+}
+
+// 页面过渡动画
+.page-enter-active,
+.page-leave-active {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.page-enter-from,
+.page-leave-to {
+  opacity: 0;
+  transform: translateY(10px);
+}

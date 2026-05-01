@@ -1,0 +1,294 @@
+// ============================================================
+// Demo: elderly-care-analysis 养老保险分析系统
+// 技术栈: Vue3 + Element Plus + ECharts
+// 兼容性: Chrome 60+, Firefox 60+, Safari 12+, Edge 79+
+// ============================================================
+
+@use 'common' as *;
+
+// --------------------------------------------------------
+// 根容器（隔离所有样式）
+// --------------------------------------------------------
+.demo-elderly-care {
+  @extend .demo-page-root;
+
+  // 整体布局容器
+  > .el-container {
+    height: 100vh;
+    height: 100dvh;
+  }
+
+  // --------------------------------------------------------
+  // 侧边栏
+  // --------------------------------------------------------
+  &__sidebar {
+    background: #1e293b;
+    color: #fff;
+    flex-shrink: 0;
+    width: 220px;
+
+    @include demo-mobile {
+      position: fixed;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      z-index: 100;
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
+
+      &.is-open {
+        transform: translateX(0);
+      }
+    }
+  }
+
+  &__sidebar-title {
+    padding: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    border-bottom: 1px solid #334155;
+  }
+
+  &__sidebar-footer {
+    padding: 16px;
+    border-top: 1px solid #334155;
+    margin-top: auto;
+  }
+
+  &__back-link {
+    color: #94a3b8;
+    font-size: 13px;
+    @include safe-flex(row, nowrap, flex-start, center);
+    @include safe-gap(6px);
+
+    &:hover {
+      color: #cbd5e1;
+    }
+  }
+
+  // --------------------------------------------------------
+  // 主内容区
+  // --------------------------------------------------------
+  &__main-area {
+    @include safe-flex(column, nowrap, flex-start, stretch);
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  // 顶部标题栏
+  &__header {
+    background: #fff;
+    border-bottom: 1px solid #e4e7ed;
+    @include safe-flex(row, nowrap, space-between, center);
+    padding: 0 20px;
+    height: 56px;
+    flex-shrink: 0;
+  }
+
+  &__header-title {
+    font-size: 16px;
+    color: #606266;
+  }
+
+  // 内容滚动区
+  &__content {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 20px;
+    background: #f5f7fa;
+
+    // 滚动条（WebKit）
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: #c0c4cc;
+      border-radius: 3px;
+    }
+
+    // Firefox
+    scrollbar-width: thin;
+    scrollbar-color: #c0c4cc transparent;
+  }
+
+  // --------------------------------------------------------
+  // 统计指标卡片
+  // --------------------------------------------------------
+  &__stat-label {
+    font-size: 14px;
+    color: #909399;
+  }
+
+  &__stat-value {
+    font-size: 28px;
+    font-weight: bold;
+    color: #409eff;
+    margin-top: 8px;
+  }
+
+  &__stat-unit {
+    font-size: 12px;
+    color: #909399;
+    margin-top: 4px;
+  }
+
+  // --------------------------------------------------------
+  // 图表容器
+  // --------------------------------------------------------
+  &__chart {
+    width: 100%;
+    height: 350px;
+
+    &--lg {
+      height: 400px;
+    }
+
+    &--xl {
+      height: 500px;
+    }
+
+    &--sm {
+      height: 300px;
+    }
+  }
+
+  // --------------------------------------------------------
+  // 表单与控件
+  // --------------------------------------------------------
+  &__form-inline {
+    margin-bottom: 15px;
+  }
+
+  &__select {
+    margin-bottom: 10px;
+    width: 200px;
+    max-width: 100%;
+  }
+
+  // --------------------------------------------------------
+  // 数据挖掘模块
+  // --------------------------------------------------------
+  &__card-header {
+    @include safe-flex(row, nowrap, space-between, center);
+  }
+
+  &__desc {
+    margin: 0 0 10px;
+    color: #606266;
+    font-size: 13px;
+  }
+
+  &__progress-desc {
+    margin-top: 8px;
+    color: #909399;
+    font-size: 13px;
+  }
+
+  &__text-center {
+    text-align: center;
+  }
+
+  // 大统计数字
+  &__big-stat {
+    font-size: 32px;
+    font-weight: bold;
+
+    &--blue {
+      color: #409eff;
+    }
+
+    &--green {
+      color: #67c23a;
+    }
+
+    &--orange {
+      color: #e6a23c;
+    }
+
+    &--red {
+      color: #f56c6c;
+    }
+  }
+
+  &__big-stat-label {
+    color: #909399;
+    font-size: 13px;
+    margin-top: 5px;
+  }
+
+  // --------------------------------------------------------
+  // 区块间距
+  // --------------------------------------------------------
+  &__section {
+    margin-bottom: 20px;
+  }
+
+  // --------------------------------------------------------
+  // Element Plus 组件覆盖
+  // --------------------------------------------------------
+  .el-menu-item [class^='el-icon'] {
+    margin-right: 8px;
+  }
+
+  .el-menu {
+    border-right: none;
+  }
+
+  // 确保卡片 header 不被博客样式覆盖
+  .el-card__header {
+    font-weight: 600;
+  }
+
+  // --------------------------------------------------------
+  // 响应式适配
+  // --------------------------------------------------------
+  @include demo-mobile {
+    &__sidebar {
+      width: 200px;
+    }
+
+    &__header {
+      padding: 0 12px;
+      height: 48px;
+    }
+
+    &__header-title {
+      font-size: 14px;
+    }
+
+    &__content {
+      padding: 12px;
+    }
+
+    &__stat-value {
+      font-size: 22px;
+    }
+
+    &__chart,
+    &__chart--lg,
+    &__chart--xl {
+      height: 280px;
+    }
+
+    &__big-stat {
+      font-size: 24px;
+    }
+
+    // el-col 在移动端堆叠
+    :deep(.el-col-6) {
+      width: 50%;
+    }
+
+    :deep(.el-col-12) {
+      width: 100%;
+      margin-bottom: 16px;
+    }
+  }
+}

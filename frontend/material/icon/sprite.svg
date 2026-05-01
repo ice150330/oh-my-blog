@@ -1,0 +1,353 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" style="display:none;">
+  <defs>
+    <!-- 图标发光滤镜：用于光影设计语言下的交互强调 -->
+    <filter id="icon-glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="1.5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- 图标渐变描边：用于强调状态（如当前导航项） -->
+    <linearGradient id="icon-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="currentColor" stop-opacity="1"/>
+      <stop offset="100%" stop-color="currentColor" stop-opacity="0.5"/>
+    </linearGradient>
+  </defs>
+
+  <symbol id="icon-about" viewBox="0 0 24 24" aria-label="about">
+    <path d="M20 21 V19 A4 4 0 0 0 16 15 H8 A4 4 0 0 0 4 19 V21" />
+  
+    <path d="M12 11 A4 4 0 0 0 12 3 A4 4 0 0 0 12 11" />
+
+  </symbol>
+
+  <symbol id="icon-arrow-down" viewBox="0 0 24 24" aria-label="arrow-down">
+    <path d="M12 5 V19" />
+  
+    <path d="M5 12 L12 19 L19 12" />
+
+  </symbol>
+
+  <symbol id="icon-arrow-left" viewBox="0 0 24 24" aria-label="arrow-left">
+    <path d="M19 12 H5" />
+  
+    <path d="M12 19 L5 12 L12 5" />
+
+  </symbol>
+
+  <symbol id="icon-arrow-right" viewBox="0 0 24 24" aria-label="arrow-right">
+    <path d="M5 12 H19" />
+  
+    <path d="M12 5 L19 12 L12 19" />
+
+  </symbol>
+
+  <symbol id="icon-arrow-up" viewBox="0 0 24 24" aria-label="arrow-up">
+    <path d="M12 19 V5" />
+  
+    <path d="M5 12 L12 5 L19 12" />
+
+  </symbol>
+
+  <symbol id="icon-article" viewBox="0 0 24 24" aria-label="article">
+    <path d="M14 2 H6 A2 2 0 0 0 4 4 V20 A2 2 0 0 0 6 22 H18 A2 2 0 0 0 20 20 V8 Z" />
+  
+    <path d="M14 2 V8 H20" />
+  
+    <path d="M8 10 H16" />
+  
+    <path d="M8 14 H16" />
+  
+    <path d="M8 18 H13" />
+
+  </symbol>
+
+  <symbol id="icon-bookmark" viewBox="0 0 24 24" aria-label="bookmark">
+    <path d="M19 21 L12 16 L5 21 V5 A2 2 0 0 1 7 3 H17 A2 2 0 0 1 19 5 V21 Z" />
+
+  </symbol>
+
+  <symbol id="icon-calendar" viewBox="0 0 24 24" aria-label="calendar">
+    <path d="M16 2 V6" />
+  
+    <path d="M8 2 V6" />
+  
+    <path d="M3 6 H21 A2 2 0 0 1 23 8 V20 A2 2 0 0 1 21 22 H3 A2 2 0 0 1 1 20 V8 A2 2 0 0 1 3 6 Z" />
+  
+    <path d="M1 10 H23" />
+
+  </symbol>
+
+  <symbol id="icon-check" viewBox="0 0 24 24" aria-label="check">
+    <path d="M20 6 L9 17 L4 12" />
+
+  </symbol>
+
+  <symbol id="icon-chevron-left" viewBox="0 0 24 24" aria-label="chevron-left">
+    <path d="M15 5 L8 12 L15 19" />
+
+  </symbol>
+
+  <symbol id="icon-chevron-right" viewBox="0 0 24 24" aria-label="chevron-right">
+    <path d="M9 5 L16 12 L9 19" />
+
+  </symbol>
+
+  <symbol id="icon-clock" viewBox="0 0 24 24" aria-label="clock">
+    <path d="M12 22 A10 10 0 1 0 12 2 A10 10 0 1 0 12 22" />
+  
+    <path d="M12 6 V12 L16 14" />
+
+  </symbol>
+
+  <symbol id="icon-close" viewBox="0 0 24 24" aria-label="close">
+    <path d="M18 6 L6 18" />
+  
+    <path d="M6 6 L18 18" />
+
+  </symbol>
+
+  <symbol id="icon-cloud" viewBox="0 0 24 24" aria-label="cloud">
+    <path d="M18 10 H17.5 A6 6 0 0 0 6.5 10 H6 A4 4 0 0 0 6 18 H18 A4 4 0 0 0 18 10" />
+
+  </symbol>
+
+  <symbol id="icon-code" viewBox="0 0 24 24" aria-label="code">
+    <path d="M16 18 L22 12 L16 6" />
+  
+    <path d="M8 6 L2 12 L8 18" />
+
+  </symbol>
+
+  <symbol id="icon-copy" viewBox="0 0 24 24" aria-label="copy">
+    <path d="M20 9 H11 A2 2 0 0 0 9 11 V20 A2 2 0 0 0 11 22 H20 A2 2 0 0 0 22 20 V11 A2 2 0 0 0 20 9 Z" />
+  
+    <path d="M15 2 H6 A2 2 0 0 0 4 4 V15" />
+
+  </symbol>
+
+  <symbol id="icon-database" viewBox="0 0 24 24" aria-label="database">
+    <path d="M12 2 C17 2 21 3.5 21 5.5 S17 9 12 9 S3 7.5 3 5.5 S7 2 12 2 Z" />
+  
+    <path d="M3 5.5 V12.5 C3 14.5 7 16 12 16 S21 14.5 21 12.5 V5.5" />
+  
+    <path d="M3 12.5 V18.5 C3 20.5 7 22 12 22 S21 20.5 21 18.5 V12.5" />
+
+  </symbol>
+
+  <symbol id="icon-error" viewBox="0 0 24 24" aria-label="error">
+    <path d="M12 2 A10 10 0 1 0 12 22 A10 10 0 1 0 12 2" />
+  
+    <path d="M15 9 L9 15" />
+  
+    <path d="M9 9 L15 15" />
+
+  </symbol>
+
+  <symbol id="icon-external-link" viewBox="0 0 24 24" aria-label="external-link">
+    <path d="M18 13 V19 A2 2 0 0 1 16 21 H5 A2 2 0 0 1 3 19 V8 A2 2 0 0 1 5 6 H11" />
+  
+    <path d="M15 3 H21 V9" />
+  
+    <path d="M21 3 L10 14" />
+
+  </symbol>
+
+  <symbol id="icon-eye" viewBox="0 0 24 24" aria-label="eye">
+    <path d="M1 12 S5 4 12 4 S23 12 23 12 S19 20 12 20 S1 12 1 12" />
+  
+    <path d="M12 15 A3 3 0 1 0 12 9 A3 3 0 1 0 12 15" />
+
+  </symbol>
+
+  <symbol id="icon-filter" viewBox="0 0 24 24" aria-label="filter">
+    <path d="M22 3 H2 L10 12.46 V19 L14 21 V12.46 L22 3 Z" />
+
+  </symbol>
+
+  <symbol id="icon-folder" viewBox="0 0 24 24" aria-label="folder">
+    <path d="M22 19 A2 2 0 0 1 20 21 H4 A2 2 0 0 1 2 19 V5 A2 2 0 0 1 4 3 H9 L11 6 H20 A2 2 0 0 1 22 8 V19 Z" />
+
+  </symbol>
+
+  <symbol id="icon-github" viewBox="0 0 24 24" aria-label="github">
+    <path d="M12 2 C6.48 2 2 6.48 2 12 C2 16.42 4.87 20.17 8.84 21.5 C9.34 21.58 9.5 21.27 9.5 21 C9.5 20.77 9.5 20.14 9.5 19.31 C6.73 19.91 6.14 17.97 6.14 17.97 C5.68 16.81 5.03 16.5 5.03 16.5 C4.12 15.88 5.1 15.9 5.1 15.9 C6.1 15.97 6.63 16.93 6.63 16.93 C7.5 18.45 8.97 18 9.54 17.76 C9.63 17.11 9.89 16.67 10.17 16.42 C7.95 16.17 5.62 15.31 5.62 11.5 C5.62 10.39 6 9.5 6.65 8.79 C6.55 8.54 6.2 7.5 6.75 6.15 C6.75 6.15 7.59 5.81 9.5 7.1 C10.29 6.88 11.15 6.77 12 6.77 C12.85 6.77 13.71 6.88 14.5 7.1 C16.41 5.81 17.25 6.15 17.25 6.15 C17.8 7.5 17.45 8.54 17.35 8.79 C18 9.5 18.38 10.39 18.38 11.5 C18.38 15.32 16.04 16.16 13.81 16.41 C14.17 16.72 14.5 17.33 14.5 18.26 C14.5 19.6 14.5 20.68 14.5 21 C14.5 21.27 14.66 21.59 15.17 21.5 C19.14 20.16 22 16.42 22 12 C22 6.48 17.52 2 12 2 Z" />
+
+  </symbol>
+
+  <symbol id="icon-heart" viewBox="0 0 24 24" aria-label="heart">
+    <path d="M20.84 4.61 A5.5 5.5 0 0 0 12 7.55 A5.5 5.5 0 0 0 3.16 4.61 A5.5 5.5 0 0 0 3.16 13.39 L12 21.23 L20.84 13.39 A5.5 5.5 0 0 0 20.84 4.61" />
+
+  </symbol>
+
+  <symbol id="icon-home" viewBox="0 0 24 24" aria-label="home">
+    <path d="M3 12 L12 3 L21 12 V19 A2 2 0 0 1 19 21 H5 A2 2 0 0 1 3 19 Z" />
+  
+    <path d="M10 21 V14 H14 V21" />
+
+  </symbol>
+
+  <symbol id="icon-link" viewBox="0 0 24 24" aria-label="link">
+    <path d="M10 13 A5 5 0 0 0 13 10 L16 7 A5 5 0 0 1 21 12 L18 15 A5 5 0 0 1 13 10" />
+  
+    <path d="M14 11 A5 5 0 0 0 11 14 L8 17 A5 5 0 0 1 3 12 L6 9 A5 5 0 0 1 11 14" />
+
+  </symbol>
+
+  <symbol id="icon-mail" viewBox="0 0 24 24" aria-label="mail">
+    <path d="M4 4 H20 A2 2 0 0 1 22 6 V18 A2 2 0 0 1 20 20 H4 A2 2 0 0 1 2 18 V6 A2 2 0 0 1 4 4 Z" />
+  
+    <path d="M22 6 L12 13 L2 6" />
+
+  </symbol>
+
+  <symbol id="icon-menu" viewBox="0 0 24 24" aria-label="menu">
+    <path d="M3 6 H21" />
+  
+    <path d="M3 12 H21" />
+  
+    <path d="M3 18 H21" />
+
+  </symbol>
+
+  <symbol id="icon-moon" viewBox="0 0 24 24" aria-label="moon">
+    <path d="M21 12.79 A9 9 0 1 1 11.21 3 A7 7 0 0 0 21 12.79 Z" />
+
+  </symbol>
+
+  <symbol id="icon-project" viewBox="0 0 24 24" aria-label="project">
+    <path d="M14 2 H6 A2 2 0 0 0 4 4 V20 A2 2 0 0 0 6 22 H18 A2 2 0 0 0 20 20 V8 Z" />
+  
+    <path d="M14 2 V8 H20" />
+  
+    <path d="M8 12 L10 14 L8 16" />
+  
+    <path d="M14 14 H16" />
+
+  </symbol>
+
+  <symbol id="icon-refresh" viewBox="0 0 24 24" aria-label="refresh">
+    <path d="M23 4 V10 H17" />
+  
+    <path d="M1 20 V14 H7" />
+  
+    <path d="M3.51 9 A9 9 0 0 1 18.36 5.64 L23 10 M1 14 L5.64 18.36 A9 9 0 0 0 20.49 15" />
+
+  </symbol>
+
+  <symbol id="icon-rss" viewBox="0 0 24 24" aria-label="rss">
+    <path d="M4 11 A9 9 0 0 1 13 20" />
+  
+    <path d="M4 4 A16 16 0 0 1 20 20" />
+  
+    <path d="M5 19 A2 2 0 0 1 5 23 A2 2 0 0 1 5 19" />
+
+  </symbol>
+
+  <symbol id="icon-search" viewBox="0 0 24 24" aria-label="search">
+    <path d="M11 19 A8 8 0 1 0 11 3 A8 8 0 1 0 11 19" />
+  
+    <path d="M21 21 L16.65 16.65" />
+
+  </symbol>
+
+  <symbol id="icon-share" viewBox="0 0 24 24" aria-label="share">
+    <path d="M4 12 V20 A2 2 0 0 0 6 22 H18 A2 2 0 0 0 20 20 V12" />
+  
+    <path d="M16 6 L12 2 L8 6" />
+  
+    <path d="M12 2 V14" />
+
+  </symbol>
+
+  <symbol id="icon-sort" viewBox="0 0 24 24" aria-label="sort">
+    <path d="M11 5 H21" />
+  
+    <path d="M11 12 H18" />
+  
+    <path d="M11 19 H15" />
+  
+    <path d="M3 5 L5 5 L5 19 L3 19" />
+  
+    <path d="M4 3 L6 3 L5 1 Z" />
+  
+    <path d="M4 21 L6 21 L5 23 Z" />
+
+  </symbol>
+
+  <symbol id="icon-sparkles" viewBox="0 0 24 24" aria-label="sparkles">
+    <path d="M12 3 L13.5 8.5 L19 10 L13.5 11.5 L12 17 L10.5 11.5 L5 10 L10.5 8.5 Z" />
+  
+    <path d="M19 3 L19.8 5.2 L22 6 L19.8 6.8 L19 9 L18.2 6.8 L16 6 L18.2 5.2 Z" />
+  
+    <path d="M5 14 L5.6 15.4 L7 16 L5.6 16.6 L5 18 L4.4 16.6 L3 16 L4.4 15.4 Z" />
+
+  </symbol>
+
+  <symbol id="icon-stack" viewBox="0 0 24 24" aria-label="stack">
+    <path d="M12 2 L22 8 L12 14 L2 8 Z" />
+  
+    <path d="M2 12 L12 18 L22 12" />
+  
+    <path d="M2 16 L12 22 L22 16" />
+
+  </symbol>
+
+  <symbol id="icon-sun" viewBox="0 0 24 24" aria-label="sun">
+    <path d="M12 16 A4 4 0 1 0 12 8 A4 4 0 1 0 12 16" />
+  
+    <path d="M12 2 V4" />
+  
+    <path d="M12 20 V22" />
+  
+    <path d="M4.93 4.93 L6.34 6.34" />
+  
+    <path d="M17.66 17.66 L19.07 19.07" />
+  
+    <path d="M2 12 H4" />
+  
+    <path d="M20 12 H22" />
+  
+    <path d="M4.93 19.07 L6.34 17.66" />
+  
+    <path d="M17.66 6.34 L19.07 4.93" />
+
+  </symbol>
+
+  <symbol id="icon-system-theme" viewBox="0 0 24 24" aria-label="system-theme">
+    <path d="M20 14 V6 A2 2 0 0 0 18 4 H6 A2 2 0 0 0 4 6 V14 A2 2 0 0 0 6 16 H18 A2 2 0 0 0 20 14 Z" />
+  
+    <path d="M12 16 V20" />
+  
+    <path d="M8 20 H16" />
+
+  </symbol>
+
+  <symbol id="icon-tag" viewBox="0 0 24 24" aria-label="tag">
+    <path d="M20.59 13.41 L13.42 20.58 A2 2 0 0 1 11.01 20.58 L3.01 12.58 A2 2 0 0 1 3.01 10.17 L10.18 3 L20.59 3.01 A2 2 0 0 1 22.59 5.01 L22.59 11.41 A2 2 0 0 1 20.59 13.41 Z" />
+  
+    <path d="M17 7 A1 1 0 1 0 17 9 A1 1 0 1 0 17 7" />
+
+  </symbol>
+
+  <symbol id="icon-terminal" viewBox="0 0 24 24" aria-label="terminal">
+    <path d="M4 4 H20 A2 2 0 0 1 22 6 V18 A2 2 0 0 1 20 20 H4 A2 2 0 0 1 2 18 V6 A2 2 0 0 1 4 4 Z" />
+  
+    <path d="M6 8 L10 12 L6 16" />
+  
+    <path d="M14 16 H18" />
+
+  </symbol>
+
+  <symbol id="icon-warning" viewBox="0 0 24 24" aria-label="warning">
+    <path d="M10.29 3.86 L1.82 18 A2 2 0 0 0 3.41 21 H20.59 A2 2 0 0 0 22.18 18 L13.71 3.86 A2 2 0 0 0 10.29 3.86 Z" />
+  
+    <path d="M12 9 V13" />
+  
+    <path d="M12 17 H12.01" />
+
+  </symbol>
+</svg>
+

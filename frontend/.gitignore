@@ -1,0 +1,25 @@
+# Nuxt 3 构建输出
+.nuxt
+.nitro
+.cache
+.output
+public/demos
+
+# 依赖
+node_modules
+
+# 日志
+*.log
+
+# 环境变量
+.env
+.env.*
+!.env.example
+
+# IDE
+.idea
+.vscode
+
+# OS
+.DS_Store
+Thumbs.db

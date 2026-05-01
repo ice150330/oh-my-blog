@@ -1,0 +1,36 @@
+spring:
+  # MySQL（通过环境变量注入）
+  datasource:
+    url: ${MYSQL_URL:jdbc:mysql://mysql:3306/oh_my_blog?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true&useSSL=false}
+    username: ${MYSQL_USER:root}
+    password: ${MYSQL_PASSWORD:123456}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      maximum-pool-size: 20
+      minimum-idle: 5
+      idle-timeout: 300000
+      connection-timeout: 20000
+
+  # Redis（通过环境变量注入）
+  data:
+    redis:
+      host: ${REDIS_HOST:redis}
+      port: ${REDIS_PORT:6379}
+      password: ${REDIS_PASSWORD:}
+      connect-timeout: 5000ms
+      lettuce:
+        pool:
+          max-active: 16
+          max-idle: 8
+          min-idle: 4
+
+  # 生产环境关闭 SQL 初始化
+  sql:
+    init:
+      mode: never
+
+# 日志
+logging:
+  level:
+    com.portfolio: info
+    org.springframework.security: warn

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.portfolio.mapper.VisitorDailyMapper">
+
+    <!-- 插入或更新 PV（页面浏览量 +1） -->
+    <insert id="upsertPv">
+        INSERT INTO visitor_daily (date, pv, uv)
+        VALUES (#{date}, 1, 0)
+        ON DUPLICATE KEY UPDATE pv = pv + 1
+    </insert>
+
+    <!-- 插入或更新 UV（独立访客数 +1） -->
+    <insert id="upsertUv">
+        INSERT INTO visitor_daily (date, pv, uv)
+        VALUES (#{date}, 0, 1)
+        ON DUPLICATE KEY UPDATE uv = uv + 1
+    </insert>
+
+</mapper>

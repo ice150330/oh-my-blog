@@ -1,0 +1,31 @@
+// ============================================================
+// 样式主入口 —— 按依赖顺序导入
+// ============================================================
+
+// 1. 基础变量（不依赖主题）
+@use 'variables';
+
+// 2. 亮色主题（默认）
+@use 'lightTheme';
+
+// 3. 暗色主题（由 .dark 类触发）
+@use 'darkTheme';
+
+// 4. 混合宏（纯工具，无输出）
+@use 'mixins';
+
+// 5. 动画定义
+@use 'animations';
+
+// 6. 全局基础样式
+@use 'globals';
+
+// 7. 工具类
+@use 'utilities';
+
+// 8. Demo 页面样式（按需加载，条件导入）
+// 此行仅为 IDE 智能提示，实际使用时在页面组件中单独导入对应 demo 样式
+// @use 'demos/tourism-analysis';
+// @use 'demos/elderly-care';
+// @use 'demos/crawler';
+// @use 'demos/kdd-b-v3';
