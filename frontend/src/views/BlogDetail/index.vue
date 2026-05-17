@@ -7,6 +7,7 @@ import { useI18n } from 'vue-i18n'
 import { articles } from '@/data/articles'
 import TagChip from '@/components/ui/TagChip.vue'
 import TocItem from '@/components/ui/TocItem.vue'
+import Breadcrumb from '@/components/ui/Breadcrumb.vue'
 
 const { t, locale } = useI18n()
 const route = useRoute()
@@ -67,6 +68,11 @@ onUnmounted(() => {
   <div v-if="article" class="max-w-[1400px] mx-auto px-6 lg:px-10 py-20">
     <div class="flex flex-col lg:flex-row gap-12">
       <div class="flex-1 min-w-0">
+        <Breadcrumb :items="[
+          { label: '首页', to: '/' },
+          { label: '博客', to: '/blog' },
+          { label: locale === 'zh' ? article.title : (article.titleEn || article.title) }
+        ]" class="mb-4" />
         <div class="article-header flex flex-col gap-4 mb-8">
           <span
             class="inline-flex items-center px-2.5 py-[3px] rounded-full text-[11px] font-semibold text-white w-fit"

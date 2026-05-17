@@ -8,6 +8,7 @@ import { projects, categoryLabels } from '@/data/projects'
 import CategoryBadge from '@/components/ui/CategoryBadge.vue'
 import TagChip from '@/components/ui/TagChip.vue'
 import GhostButton from '@/components/ui/GhostButton.vue'
+import Breadcrumb from '@/components/ui/Breadcrumb.vue'
 
 const { t, locale } = useI18n()
 const route = useRoute()
@@ -63,6 +64,13 @@ onUnmounted(() => {
 
 <template>
   <div v-if="project" class="flex flex-col">
+    <div class="max-w-[1400px] mx-auto px-6 lg:px-10 pt-6">
+      <Breadcrumb :items="[
+        { label: '首页', to: '/' },
+        { label: '项目', to: '/projects' },
+        { label: locale === 'zh' ? project.title : (project.titleEn || project.title) }
+      ]" />
+    </div>
     <section
       class="project-cover relative flex flex-col items-center justify-center gap-4 text-center min-h-[480px] px-6"
       :style="coverStyle"
