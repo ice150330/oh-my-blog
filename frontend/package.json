@@ -1,33 +1,29 @@
 {
-  "name": "oh-my-blog-frontend",
+  "name": "frontend",
   "private": true,
+  "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "build": "nuxt build",
-    "dev": "nuxt dev",
-    "generate": "nuxt generate",
-    "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "dev": "vite",
+    "build": "vue-tsc -b && vite build",
+    "preview": "vite preview"
   },
   "dependencies": {
-    "@element-plus/icons-vue": "^2.3.2",
-    "@nuxt/content": "^2.12.1",
-    "@pinia/nuxt": "^0.5.1",
-    "echarts": "^6.0.0",
-    "element-plus": "^2.13.7",
-    "nuxt": "^3.11.2",
-    "pinia": "^2.1.7",
-    "vue": "^3.4.21",
-    "vue-echarts": "^8.0.1",
-    "vue-router": "^4.3.0"
+    "pinia": "^3.0.4",
+    "sass": "^1.99.0",
+    "vue": "^3.5.34",
+    "vue-router": "^4.6.4"
   },
   "devDependencies": {
-    "@nuxtjs/tailwindcss": "^6.12.0",
-    "sass": "^1.77.0",
-    "typescript": "^5.4.5"
-  },
-  "volta": {
-    "node": "18.20.0",
-    "pnpm": "9.0.0"
+    "@tailwindcss/postcss": "^4.3.0",
+    "@types/node": "^24.12.4",
+    "@vitejs/plugin-vue": "^6.0.6",
+    "@vue/tsconfig": "^0.9.1",
+    "autoprefixer": "^10.5.0",
+    "postcss": "^8.5.14",
+    "tailwindcss": "^4.3.0",
+    "typescript": "~6.0.2",
+    "vite": "^8.0.12",
+    "vue-tsc": "^3.2.8"
   }
 }
