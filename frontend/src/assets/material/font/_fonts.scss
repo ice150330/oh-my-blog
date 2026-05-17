@@ -9,34 +9,16 @@
 
 // ========== 基础字体栈 ==========
 
-// 正文字体：思源黑体子集（约 1.2MB，含 8k+ 常用汉字）
-@font-face {
-  font-family: 'Source Han Sans SC';
-  src: url('/fonts/SourceHanSansSC-subset.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-// 代码等宽字体：JetBrains Mono Bold（西文编程字体，139KB）
+// 代码等宽字体：JetBrains Mono（西文编程字体）
 @font-face {
   font-family: 'JetBrains Mono';
   src: url('/fonts/JetBrainsMono.woff2') format('woff2');
-  font-weight: 700;
+  font-weight: 400 700;
   font-style: normal;
   font-display: swap;
 }
 
-// 代码等宽字体（中文回退）：更纱黑体 Mono SC 子集（约 20KB，ASCII + 少量中文）
-@font-face {
-  font-family: 'Sarasa Mono SC';
-  src: url('/fonts/SarasaMonoSC-subset.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-// 西文展示字体：LIBRARY 3 AM（艺术装饰风格，34KB）
+// 西文展示字体：LIBRARY 3 AM（艺术装饰风格）
 @font-face {
   font-family: 'Library 3 AM';
   src: url('/fonts/Library-3-am-3.woff2') format('woff2');
@@ -45,30 +27,11 @@
   font-display: swap;
 }
 
-// 装饰字体 A：动漫二次元风格子集（约 174KB）
-@font-face {
-  font-family: 'DongMan ErCiYuan';
-  src: url('/fonts/DongManErCiYuan-subset.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-// 装饰字体 B：像素风格子集（约 191KB）
-@font-face {
-  font-family: 'PixelTi';
-  src: url('/fonts/PixelTi-subset.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
 // ========== CSS 变量定义 ==========
 
 :root {
-  // 正文阅读：思源黑体为主，系统字体兜底
+  // 正文阅读：Noto Sans SC（Google Fonts）为主，系统字体兜底
   --font-body:
-    'Source Han Sans SC',
     'Noto Sans SC',
     'PingFang SC',
     'Microsoft YaHei',
@@ -77,28 +40,24 @@
   // 代码与技术内容：等宽字体确保中英文对齐
   --font-code:
     'JetBrains Mono',
-    'Sarasa Mono SC',
     'Fira Code',
-    'Cascadia Code',
     monospace;
 
-  // 英文展示标题：艺术字体 + Archivo 回退
+  // 英文展示标题：艺术字体 + 无衬线回退
   --font-display:
     'Library 3 AM',
-    'Archivo',
-    'Space Grotesk',
+    'Noto Sans SC',
     sans-serif;
 
-  // 中文特色标题：动漫风格字体
+  // 中文特色标题：Noto Sans SC
   --font-accent:
-    'DongMan ErCiYuan',
+    'Noto Sans SC',
     'PingFang SC',
-    'Source Han Sans SC',
     sans-serif;
 
-  // 像素/复古风格：像素字体
+  // 像素/复古风格：JetBrains Mono 兜底
   --font-pixel:
-    'PixelTi',
+    'JetBrains Mono',
     'Courier New',
     monospace;
 }

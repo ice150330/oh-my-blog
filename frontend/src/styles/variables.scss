@@ -125,26 +125,11 @@
 }
 
 // -------------------- Font Families --------------------
-@font-face {
-  font-family: 'Source Han Sans SC';
-  src: url('/fonts/SourceHanSansSC-subset.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
+// 本地字体仅保留 JetBrains Mono（代码）与 Library 3 AM（展示/装饰）
 @font-face {
   font-family: 'JetBrains Mono';
   src: url('/fonts/JetBrainsMono.woff2') format('woff2');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Sarasa Mono SC';
-  src: url('/fonts/SarasaMonoSC-subset.woff2') format('woff2');
-  font-weight: 400;
+  font-weight: 400 700;
   font-style: normal;
   font-display: swap;
 }
@@ -157,17 +142,8 @@
   font-display: swap;
 }
 
-@font-face {
-  font-family: 'DongMan ErCiYuan';
-  src: url('/fonts/DongManErCiYuan-subset.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
 :root {
   --font-body:
-    'Source Han Sans SC',
     'Noto Sans SC',
     'PingFang SC',
     'Microsoft YaHei',
@@ -175,20 +151,17 @@
 
   --font-code:
     'JetBrains Mono',
-    'Sarasa Mono SC',
     'Fira Code',
     monospace;
 
   --font-display:
     'Library 3 AM',
-    'Archivo',
-    'Space Grotesk',
+    'Noto Sans SC',
     sans-serif;
 
   --font-accent:
-    'DongMan ErCiYuan',
+    'Noto Sans SC',
     'PingFang SC',
-    'Source Han Sans SC',
     sans-serif;
 
   --font-pixel:
