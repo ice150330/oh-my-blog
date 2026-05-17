@@ -119,13 +119,13 @@ onUnmounted(() => {
           你好世界,正在创造中
         </div>
         <h1
-          class="hero-title text-7xl md:text-8xl font-bold tracking-tight mt-4"
+          class="hero-title text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight mt-4"
           style="font-family: var(--font-display); color: var(--color-text-1);"
         >
           你好,我是 Wei。
         </h1>
         <p
-          class="hero-subtitle text-2xl md:text-[28px] mt-4"
+          class="hero-subtitle text-lg sm:text-xl md:text-2xl lg:text-[28px] mt-4"
           style="font-family: var(--font-accent); color: var(--color-text-2);"
         >
           数据工程师 · 全栈开发者

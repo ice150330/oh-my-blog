@@ -72,7 +72,7 @@ onUnmounted(() => {
       ]" />
     </div>
     <section
-      class="project-cover relative flex flex-col items-center justify-center gap-4 text-center min-h-[480px] px-6"
+      class="project-cover relative flex flex-col items-center justify-center gap-4 text-center min-h-[300px] sm:min-h-[380px] md:min-h-[480px] px-6"
       :style="coverStyle"
     >
       <CategoryBadge :category="project.category" />

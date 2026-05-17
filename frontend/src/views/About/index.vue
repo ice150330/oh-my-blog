@@ -52,7 +52,7 @@ onUnmounted(() => {
       <div class="about-left w-full lg:w-[480px] flex flex-col gap-8">
         <div class="flex flex-col items-center gap-5 rounded-2xl p-8" style="background: var(--color-card); border: 1px solid var(--color-border);">
           <div
-            class="w-[200px] h-[200px] rounded-full flex items-center justify-center text-5xl font-bold"
+            class="w-[140px] h-[140px] sm:w-[160px] sm:h-[160px] md:w-[200px] md:h-[200px] rounded-full flex items-center justify-center text-3xl sm:text-4xl md:text-5xl font-bold"
             style="background: radial-gradient(circle at 40% 40%, var(--mesh-tint-1), var(--mesh-tint-2)); font-family: var(--font-display); color: var(--color-primary);"
           >
             W
