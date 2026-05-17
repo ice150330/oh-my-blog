@@ -18,14 +18,14 @@ onMounted(() => {
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     if (reduced) return
 
-    gsap.from('.tech-header', { y: 30, opacity: 0, duration: 0.7, ease: 'power3.out' })
+    gsap.fromTo('.tech-header', { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7, ease: 'power3.out' })
 
     ScrollTrigger.create({
       trigger: '.radar-section',
       start: 'top 85%',
       once: true,
       onEnter: () => {
-        gsap.from('.radar-section > *', { y: 40, opacity: 0, duration: 0.8, stagger: 0.15, ease: 'power3.out' })
+        gsap.fromTo('.radar-section > *', { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, stagger: 0.15, ease: 'power3.out' })
       }
     })
 
@@ -34,7 +34,7 @@ onMounted(() => {
       start: 'top 85%',
       once: true,
       onEnter: () => {
-        gsap.from('.category-grid > div', { y: 40, opacity: 0, scale: 0.98, duration: 0.7, stagger: 0.1, ease: 'power3.out' })
+        gsap.fromTo('.category-grid > div', { y: 40, opacity: 0, scale: 0.98 }, { y: 0, opacity: 1, scale: 1, duration: 0.7, stagger: 0.1, ease: 'power3.out' })
       }
     })
 
@@ -43,9 +43,12 @@ onMounted(() => {
       start: 'top 85%',
       once: true,
       onEnter: () => {
-        gsap.from('.stats-bar > div', { y: 30, opacity: 0, duration: 0.6, stagger: 0.08, ease: 'power3.out' })
+        gsap.fromTo('.stats-bar > div', { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, stagger: 0.08, ease: 'power3.out' })
       }
     })
+
+    // 确保 ScrollTrigger 位置计算正确
+    ScrollTrigger.refresh()
   })
 })
 

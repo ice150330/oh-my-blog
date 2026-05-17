@@ -1,4 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Home from '@/views/Home/index.vue'
 
 const router = createRouter({
@@ -15,6 +17,20 @@ const router = createRouter({
   scrollBehavior() {
     return { top: 0 }
   },
+})
+
+// 路由切换前全局清理所有 GSAP 动画与 ScrollTrigger，防止旧页面动画残留干扰新页面
+router.beforeEach(() => {
+  gsap.killTweensOf('*')
+  ScrollTrigger.getAll().forEach((st) => st.kill())
+})
+
+// 路由切换完成后刷新 ScrollTrigger 位置计算
+router.afterEach(() => {
+  // 等待 DOM 更新后再刷新
+  requestAnimationFrame(() => {
+    ScrollTrigger.refresh()
+  })
 })
 
 export default router

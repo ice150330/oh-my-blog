@@ -39,16 +39,19 @@ onMounted(() => {
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     if (reduced) return
 
-    gsap.from('.project-cover > *', { y: 30, opacity: 0, duration: 0.8, stagger: 0.1, ease: 'power3.out', delay: 0.1 })
+    gsap.fromTo('.project-cover > *', { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, stagger: 0.1, ease: 'power3.out', delay: 0.1 })
 
     ScrollTrigger.create({
       trigger: '.project-content',
       start: 'top 85%',
       once: true,
       onEnter: () => {
-        gsap.from('.project-content > *', { y: 40, opacity: 0, duration: 0.7, stagger: 0.12, ease: 'power3.out' })
+        gsap.fromTo('.project-content > *', { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7, stagger: 0.12, ease: 'power3.out' })
       }
     })
+
+    // 确保 ScrollTrigger 位置计算正确
+    ScrollTrigger.refresh()
   })
 })
 

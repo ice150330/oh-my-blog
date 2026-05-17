@@ -1,11 +1,13 @@
 <script setup lang="ts">
 import { useThemeStore } from '@/stores/theme'
+import { useRoute } from 'vue-router'
 import NavBar from './NavBar.vue'
 import AppFooter from './AppFooter.vue'
 import ScrollProgress from '@/components/ui/ScrollProgress.vue'
 import BackToTop from '@/components/ui/BackToTop.vue'
 
 const theme = useThemeStore()
+const route = useRoute()
 </script>
 
 <template>
@@ -14,7 +16,7 @@ const theme = useThemeStore()
       <ScrollProgress />
       <NavBar />
       <main class="flex-1">
-        <RouterView />
+        <RouterView :key="route.path" />
       </main>
       <AppFooter />
       <BackToTop />

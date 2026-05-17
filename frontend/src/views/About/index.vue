@@ -20,8 +20,8 @@ onMounted(() => {
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     if (reduced) return
 
-    gsap.from('.about-left > div', {
-      y: 40, opacity: 0, duration: 0.7, stagger: 0.15, ease: 'power3.out'
+    gsap.fromTo('.about-left > div', { y: 40, opacity: 0 }, {
+      y: 0, opacity: 1, duration: 0.7, stagger: 0.15, ease: 'power3.out'
     })
 
     ScrollTrigger.create({
@@ -29,11 +29,14 @@ onMounted(() => {
       start: 'top 80%',
       once: true,
       onEnter: () => {
-        gsap.from('.about-right > div', {
-          y: 40, opacity: 0, duration: 0.7, stagger: 0.15, ease: 'power3.out'
+        gsap.fromTo('.about-right > div', { y: 40, opacity: 0 }, {
+          y: 0, opacity: 1, duration: 0.7, stagger: 0.15, ease: 'power3.out'
         })
       }
     })
+
+    // 确保 ScrollTrigger 位置计算正确
+    ScrollTrigger.refresh()
   })
 })
 

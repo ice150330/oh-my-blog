@@ -39,15 +39,15 @@ onMounted(() => {
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     if (reduced) return
 
-    gsap.from('.blog-header', { y: 30, opacity: 0, duration: 0.7, ease: 'power3.out' })
-    gsap.from('.filter-tab', { y: 20, opacity: 0, duration: 0.5, stagger: 0.06, ease: 'power3.out', delay: 0.2 })
+    gsap.fromTo('.blog-header', { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7, ease: 'power3.out' })
+    gsap.fromTo('.filter-tab', { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, stagger: 0.06, ease: 'power3.out', delay: 0.2 })
 
     ScrollTrigger.create({
       trigger: '.article-list',
       start: 'top 85%',
       once: true,
       onEnter: () => {
-        gsap.from('.article-list .article-card', { y: 40, opacity: 0, duration: 0.7, stagger: 0.1, ease: 'power3.out' })
+        gsap.fromTo('.article-list .article-card', { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7, stagger: 0.1, ease: 'power3.out' })
       }
     })
 
@@ -56,9 +56,12 @@ onMounted(() => {
       start: 'top 85%',
       once: true,
       onEnter: () => {
-        gsap.from('.blog-sidebar > div', { y: 30, opacity: 0, duration: 0.6, stagger: 0.12, ease: 'power3.out' })
+        gsap.fromTo('.blog-sidebar > div', { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, stagger: 0.12, ease: 'power3.out' })
       }
     })
+
+    // 确保 ScrollTrigger 位置计算正确
+    ScrollTrigger.refresh()
   })
 })
 
