@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, onMounted } from 'vue'
+import { computed, onMounted, onUnmounted } from 'vue'
 import { useRoute, RouterLink } from 'vue-router'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -8,7 +8,6 @@ import { articles } from '@/data/articles'
 import TagChip from '@/components/ui/TagChip.vue'
 import TocItem from '@/components/ui/TocItem.vue'
 
-gsap.registerPlugin(ScrollTrigger)
 const { t, locale } = useI18n()
 const route = useRoute()
 const slug = computed(() => route.params.slug as string)
@@ -35,20 +34,29 @@ const tocItems = [
   { label: '复盘总结', active: false },
 ]
 
+let ctx: gsap.Context | null = null
+
 onMounted(() => {
-  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-  if (reduced) return
+  ctx = gsap.context(() => {
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (reduced) return
 
-  gsap.from('.article-header > *', { y: 30, opacity: 0, duration: 0.7, stagger: 0.08, ease: 'power3.out', delay: 0.1 })
+    gsap.from('.article-header > *', { y: 30, opacity: 0, duration: 0.7, stagger: 0.08, ease: 'power3.out', delay: 0.1 })
 
-  ScrollTrigger.create({
-    trigger: '.article-body',
-    start: 'top 85%',
-    once: true,
-    onEnter: () => {
-      gsap.from('.article-body > *', { y: 30, opacity: 0, duration: 0.6, stagger: 0.08, ease: 'power3.out' })
-    }
+    ScrollTrigger.create({
+      trigger: '.article-body',
+      start: 'top 85%',
+      once: true,
+      onEnter: () => {
+        gsap.from('.article-body > *', { y: 30, opacity: 0, duration: 0.6, stagger: 0.08, ease: 'power3.out' })
+      }
+    })
   })
+})
+
+onUnmounted(() => {
+  ctx?.revert()
+  ctx = null
 })
 </script>
 

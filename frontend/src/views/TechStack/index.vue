@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted } from 'vue'
+import { onMounted, onUnmounted } from 'vue'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useI18n } from 'vue-i18n'
@@ -9,41 +9,49 @@ import SkillBar from '@/components/ui/SkillBar.vue'
 import StatItem from '@/components/ui/StatItem.vue'
 import IconBadge from '@/components/ui/IconBadge.vue'
 
-gsap.registerPlugin(ScrollTrigger)
 const { t } = useI18n()
 
+let ctx: gsap.Context | null = null
+
 onMounted(() => {
-  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-  if (reduced) return
+  ctx = gsap.context(() => {
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (reduced) return
 
-  gsap.from('.tech-header', { y: 30, opacity: 0, duration: 0.7, ease: 'power3.out' })
+    gsap.from('.tech-header', { y: 30, opacity: 0, duration: 0.7, ease: 'power3.out' })
 
-  ScrollTrigger.create({
-    trigger: '.radar-section',
-    start: 'top 85%',
-    once: true,
-    onEnter: () => {
-      gsap.from('.radar-section > *', { y: 40, opacity: 0, duration: 0.8, stagger: 0.15, ease: 'power3.out' })
-    }
+    ScrollTrigger.create({
+      trigger: '.radar-section',
+      start: 'top 85%',
+      once: true,
+      onEnter: () => {
+        gsap.from('.radar-section > *', { y: 40, opacity: 0, duration: 0.8, stagger: 0.15, ease: 'power3.out' })
+      }
+    })
+
+    ScrollTrigger.create({
+      trigger: '.category-grid',
+      start: 'top 85%',
+      once: true,
+      onEnter: () => {
+        gsap.from('.category-grid > div', { y: 40, opacity: 0, scale: 0.98, duration: 0.7, stagger: 0.1, ease: 'power3.out' })
+      }
+    })
+
+    ScrollTrigger.create({
+      trigger: '.stats-bar',
+      start: 'top 85%',
+      once: true,
+      onEnter: () => {
+        gsap.from('.stats-bar > div', { y: 30, opacity: 0, duration: 0.6, stagger: 0.08, ease: 'power3.out' })
+      }
+    })
   })
+})
 
-  ScrollTrigger.create({
-    trigger: '.category-grid',
-    start: 'top 85%',
-    once: true,
-    onEnter: () => {
-      gsap.from('.category-grid > div', { y: 40, opacity: 0, scale: 0.98, duration: 0.7, stagger: 0.1, ease: 'power3.out' })
-    }
-  })
-
-  ScrollTrigger.create({
-    trigger: '.stats-bar',
-    start: 'top 85%',
-    once: true,
-    onEnter: () => {
-      gsap.from('.stats-bar > div', { y: 30, opacity: 0, duration: 0.6, stagger: 0.08, ease: 'power3.out' })
-    }
-  })
+onUnmounted(() => {
+  ctx?.revert()
+  ctx = null
 })
 </script>
 

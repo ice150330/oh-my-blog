@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted } from 'vue'
+import { onMounted, onUnmounted } from 'vue'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useI18n } from 'vue-i18n'
@@ -11,27 +11,35 @@ import IconBadge from '@/components/ui/IconBadge.vue'
 import TimelineNode from '@/components/ui/TimelineNode.vue'
 import PrimaryButton from '@/components/ui/PrimaryButton.vue'
 
-gsap.registerPlugin(ScrollTrigger)
 const { t } = useI18n()
 
+let ctx: gsap.Context | null = null
+
 onMounted(() => {
-  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-  if (reduced) return
+  ctx = gsap.context(() => {
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (reduced) return
 
-  gsap.from('.about-left > div', {
-    y: 40, opacity: 0, duration: 0.7, stagger: 0.15, ease: 'power3.out'
-  })
+    gsap.from('.about-left > div', {
+      y: 40, opacity: 0, duration: 0.7, stagger: 0.15, ease: 'power3.out'
+    })
 
-  ScrollTrigger.create({
-    trigger: '.about-right',
-    start: 'top 80%',
-    once: true,
-    onEnter: () => {
-      gsap.from('.about-right > div', {
-        y: 40, opacity: 0, duration: 0.7, stagger: 0.15, ease: 'power3.out'
-      })
-    }
+    ScrollTrigger.create({
+      trigger: '.about-right',
+      start: 'top 80%',
+      once: true,
+      onEnter: () => {
+        gsap.from('.about-right > div', {
+          y: 40, opacity: 0, duration: 0.7, stagger: 0.15, ease: 'power3.out'
+        })
+      }
+    })
   })
+})
+
+onUnmounted(() => {
+  ctx?.revert()
+  ctx = null
 })
 </script>
 

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { projects, featuredProjectIds } from '@/data/projects'
@@ -12,8 +12,6 @@ import GhostButton from '@/components/ui/GhostButton.vue'
 import TagChip from '@/components/ui/TagChip.vue'
 import CategoryBadge from '@/components/ui/CategoryBadge.vue'
 
-gsap.registerPlugin(ScrollTrigger)
-
 const featured = computed(() =>
   featuredProjectIds.map(id => projects.find(p => p.id === id)!).filter(Boolean)
 )
@@ -23,64 +21,73 @@ const currentProject = computed(() => featured.value[activeIndex.value])
 
 const latestArticles = articles.slice(0, 3)
 
+let ctx: gsap.Context | null = null
+
 onMounted(() => {
-  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-  if (reduced) return
+  ctx = gsap.context(() => {
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (reduced) return
 
-  // Hero stagger entrance
-  gsap.from('.hero-badge', { y: 20, opacity: 0, duration: 0.6, delay: 0.1, ease: 'power3.out' })
-  gsap.from('.hero-title', { y: 40, opacity: 0, duration: 0.8, delay: 0.2, ease: 'power3.out' })
-  gsap.from('.hero-subtitle', { y: 30, opacity: 0, duration: 0.7, delay: 0.35, ease: 'power3.out' })
-  gsap.from('.hero-desc', { y: 30, opacity: 0, duration: 0.7, delay: 0.45, ease: 'power3.out' })
-  gsap.from('.hero-cta', { y: 20, opacity: 0, duration: 0.6, delay: 0.6, ease: 'power3.out' })
+    // Hero stagger entrance
+    gsap.from('.hero-badge', { y: 20, opacity: 0, duration: 0.6, delay: 0.1, ease: 'power3.out' })
+    gsap.from('.hero-title', { y: 40, opacity: 0, duration: 0.8, delay: 0.2, ease: 'power3.out' })
+    gsap.from('.hero-subtitle', { y: 30, opacity: 0, duration: 0.7, delay: 0.35, ease: 'power3.out' })
+    gsap.from('.hero-desc', { y: 30, opacity: 0, duration: 0.7, delay: 0.45, ease: 'power3.out' })
+    gsap.from('.hero-cta', { y: 20, opacity: 0, duration: 0.6, delay: 0.6, ease: 'power3.out' })
 
-  // Brief Intro cards stagger
-  ScrollTrigger.create({
-    trigger: '.brief-intro',
-    start: 'top 85%',
-    once: true,
-    onEnter: () => {
-      gsap.from('.brief-intro .intro-card', {
-        y: 40, opacity: 0, duration: 0.7, stagger: 0.12, ease: 'power3.out'
-      })
-    }
+    // Brief Intro cards stagger
+    ScrollTrigger.create({
+      trigger: '.brief-intro',
+      start: 'top 85%',
+      once: true,
+      onEnter: () => {
+        gsap.from('.brief-intro .intro-card', {
+          y: 40, opacity: 0, duration: 0.7, stagger: 0.12, ease: 'power3.out'
+        })
+      }
+    })
+
+    // Featured section
+    ScrollTrigger.create({
+      trigger: '.featured-section',
+      start: 'top 85%',
+      once: true,
+      onEnter: () => {
+        gsap.from('.featured-section .featured-panel', {
+          y: 50, opacity: 0, duration: 0.8, stagger: 0.15, ease: 'power3.out'
+        })
+      }
+    })
+
+    // Article cards
+    ScrollTrigger.create({
+      trigger: '.latest-section',
+      start: 'top 85%',
+      once: true,
+      onEnter: () => {
+        gsap.from('.latest-section .article-item', {
+          y: 30, opacity: 0, duration: 0.6, stagger: 0.1, ease: 'power3.out'
+        })
+      }
+    })
+
+    // CTA Banner
+    ScrollTrigger.create({
+      trigger: '.cta-banner',
+      start: 'top 85%',
+      once: true,
+      onEnter: () => {
+        gsap.from('.cta-banner > *', {
+          y: 30, opacity: 0, duration: 0.7, stagger: 0.1, ease: 'power3.out'
+        })
+      }
+    })
   })
+})
 
-  // Featured section
-  ScrollTrigger.create({
-    trigger: '.featured-section',
-    start: 'top 85%',
-    once: true,
-    onEnter: () => {
-      gsap.from('.featured-section .featured-panel', {
-        y: 50, opacity: 0, duration: 0.8, stagger: 0.15, ease: 'power3.out'
-      })
-    }
-  })
-
-  // Article cards
-  ScrollTrigger.create({
-    trigger: '.latest-section',
-    start: 'top 85%',
-    once: true,
-    onEnter: () => {
-      gsap.from('.latest-section .article-item', {
-        y: 30, opacity: 0, duration: 0.6, stagger: 0.1, ease: 'power3.out'
-      })
-    }
-  })
-
-  // CTA Banner
-  ScrollTrigger.create({
-    trigger: '.cta-banner',
-    start: 'top 85%',
-    once: true,
-    onEnter: () => {
-      gsap.from('.cta-banner > *', {
-        y: 30, opacity: 0, duration: 0.7, stagger: 0.1, ease: 'power3.out'
-      })
-    }
-  })
+onUnmounted(() => {
+  ctx?.revert()
+  ctx = null
 })
 </script>
 

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useI18n } from 'vue-i18n'
@@ -9,7 +9,6 @@ import ProjectCard from '@/components/ui/ProjectCard.vue'
 import CategoryBadge from '@/components/ui/CategoryBadge.vue'
 import GhostButton from '@/components/ui/GhostButton.vue'
 
-gsap.registerPlugin(ScrollTrigger)
 const { t, locale } = useI18n()
 
 const categories = computed(() => {
@@ -33,30 +32,39 @@ const filteredProjects = computed(() => {
 
 const metaProjects = computed(() => projects.filter(p => p.category === 'meta'))
 
+let ctx: gsap.Context | null = null
+
 onMounted(() => {
-  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-  if (reduced) return
+  ctx = gsap.context(() => {
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (reduced) return
 
-  gsap.from('.projects-header', { y: 30, opacity: 0, duration: 0.7, ease: 'power3.out' })
-  gsap.from('.category-tab', { y: 20, opacity: 0, duration: 0.5, stagger: 0.06, ease: 'power3.out', delay: 0.2 })
+    gsap.from('.projects-header', { y: 30, opacity: 0, duration: 0.7, ease: 'power3.out' })
+    gsap.from('.category-tab', { y: 20, opacity: 0, duration: 0.5, stagger: 0.06, ease: 'power3.out', delay: 0.2 })
 
-  ScrollTrigger.create({
-    trigger: '.project-grid',
-    start: 'top 85%',
-    once: true,
-    onEnter: () => {
-      gsap.from('.project-grid .project-card', { y: 40, opacity: 0, scale: 0.98, duration: 0.7, stagger: 0.1, ease: 'power3.out' })
-    }
+    ScrollTrigger.create({
+      trigger: '.project-grid',
+      start: 'top 85%',
+      once: true,
+      onEnter: () => {
+        gsap.from('.project-grid .project-card', { y: 40, opacity: 0, scale: 0.98, duration: 0.7, stagger: 0.1, ease: 'power3.out' })
+      }
+    })
+
+    ScrollTrigger.create({
+      trigger: '.meta-section',
+      start: 'top 85%',
+      once: true,
+      onEnter: () => {
+        gsap.from('.meta-section .meta-card', { y: 50, opacity: 0, duration: 0.8, stagger: 0.15, ease: 'power3.out' })
+      }
+    })
   })
+})
 
-  ScrollTrigger.create({
-    trigger: '.meta-section',
-    start: 'top 85%',
-    once: true,
-    onEnter: () => {
-      gsap.from('.meta-section .meta-card', { y: 50, opacity: 0, duration: 0.8, stagger: 0.15, ease: 'power3.out' })
-    }
-  })
+onUnmounted(() => {
+  ctx?.revert()
+  ctx = null
 })
 </script>
 

@@ -1,8 +1,7 @@
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
-// 注册插件一次
-gsap.registerPlugin(ScrollTrigger)
+// ScrollTrigger 已在 main.ts 中全局注册一次，此处直接使用即可
 
 // 检查用户是否偏好减少动画
 export const prefersReducedMotion = (): boolean => {

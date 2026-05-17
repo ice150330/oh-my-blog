@@ -4,7 +4,12 @@ import router from './router'
 import pinia from './stores'
 import i18n from './locales'
 import { useLangStore } from './stores/lang'
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import './styles/main.scss'
+
+// GSAP ScrollTrigger 全局只注册一次
+gsap.registerPlugin(ScrollTrigger)
 
 const app = createApp(App)
 app.use(pinia)
