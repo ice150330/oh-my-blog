@@ -119,14 +119,6 @@
   font-display: swap;
 }
 
-@font-face {
-  font-family: 'PixelTi';
-  src: url('/fonts/PixelTi-subset.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
 :root {
   --font-body:
     'Source Han Sans SC',
@@ -154,7 +146,7 @@
     sans-serif;
 
   --font-pixel:
-    'PixelTi',
+    'JetBrains Mono',
     'Courier New',
     monospace;
 }
