@@ -1,18 +1,24 @@
 <script setup lang="ts">
+import { ref } from 'vue'
 import type { Project } from '@/types'
 import CategoryBadge from './CategoryBadge.vue'
 import TagChip from './TagChip.vue'
+import { useTilt } from '@/composables/useTilt'
 
 defineProps<{
   project: Project
 }>()
+
+const cardRef = ref<HTMLElement | null>(null)
+const tiltStyle = useTilt(cardRef, 6)
 </script>
 
 <template>
   <RouterLink
+    ref="cardRef"
     :to="`/projects/${project.slug}`"
-    class="group flex flex-col rounded-xl overflow-hidden transition-all duration-500 cursor-pointer"
-    style="background: var(--color-card); border: 1px solid var(--color-border);"
+    class="group flex flex-col rounded-xl overflow-hidden cursor-pointer"
+    :style="[{ background: 'var(--color-card)', border: '1px solid var(--color-border)' }, tiltStyle]"
   >
     <div
       class="h-[200px] w-full relative flex items-start justify-start p-4 transition-transform duration-700 group-hover:scale-105"

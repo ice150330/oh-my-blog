@@ -21,9 +21,25 @@ const currentProject = computed(() => featured.value[activeIndex.value])
 
 const latestArticles = articles.slice(0, 3)
 
+// 自动轮播
+let autoPlayTimer: ReturnType<typeof setInterval> | null = null
+const startAutoPlay = () => {
+  if (autoPlayTimer) return
+  autoPlayTimer = setInterval(() => {
+    activeIndex.value = (activeIndex.value + 1) % featured.value.length
+  }, 5000)
+}
+const stopAutoPlay = () => {
+  if (autoPlayTimer) {
+    clearInterval(autoPlayTimer)
+    autoPlayTimer = null
+  }
+}
+
 let ctx: gsap.Context | null = null
 
 onMounted(() => {
+  startAutoPlay()
   ctx = gsap.context(() => {
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     if (reduced) return
@@ -81,6 +97,7 @@ onMounted(() => {
 })
 
 onUnmounted(() => {
+  stopAutoPlay()
   ctx?.revert()
   ctx = null
 })
@@ -169,7 +186,11 @@ onUnmounted(() => {
         </RouterLink>
       </div>
 
-      <div class="flex flex-col lg:flex-row gap-8 h-auto lg:h-[540px]">
+      <div
+        class="flex flex-col lg:flex-row gap-8 h-auto lg:h-[540px]"
+        @mouseenter="stopAutoPlay"
+        @mouseleave="startAutoPlay"
+      >
         <!-- Left Panel -->
         <div class="featured-panel flex flex-col justify-center gap-5 w-full lg:w-[520px]">
           <span class="text-[13px] font-normal" style="font-family: var(--font-code); color: var(--color-text-3);">
