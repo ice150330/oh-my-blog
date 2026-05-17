@@ -2,8 +2,11 @@
 import { useRoute } from 'vue-router'
 import Logo from '@/components/ui/Logo.vue'
 import ThemeToggle from '@/components/ui/ThemeToggle.vue'
+import LangSwitch from '@/components/ui/LangSwitch.vue'
+import { useSyncLocale } from '@/stores/lang'
 
 const route = useRoute()
+useSyncLocale()
 
 const links = [
   { to: '/', label: '首页' },
@@ -15,8 +18,8 @@ const links = [
 </script>
 
 <template>
-  <nav class="sticky top-0 z-50 border-b" style="background: var(--color-bg-elevated); border-color: var(--color-border);">
-    <div class="max-w-7xl mx-auto px-6 h-[72px] flex items-center justify-between">
+  <nav class="sticky top-0 z-50 border-b glass" style="border-color: var(--color-border);">
+    <div class="max-w-[1400px] mx-auto px-6 lg:px-10 h-[72px] flex items-center justify-between">
       <Logo />
       <div class="flex items-center gap-8">
         <RouterLink
@@ -34,7 +37,8 @@ const links = [
           />
         </RouterLink>
       </div>
-      <div class="flex items-center gap-4">
+      <div class="flex items-center gap-3">
+        <LangSwitch />
         <ThemeToggle />
         <div class="w-10 h-10 rounded-full" style="background: var(--color-primary-soft); border: 1px solid var(--color-border);" />
       </div>

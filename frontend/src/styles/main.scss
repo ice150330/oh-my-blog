@@ -1,4 +1,5 @@
 @use './variables.scss';
+@use './animations.scss';
 
 @tailwind base;
 @tailwind components;
@@ -25,7 +26,7 @@
 
   /* Scrollbar */
   ::-webkit-scrollbar {
-    width: 8px;
+    width: 6px;
   }
   ::-webkit-scrollbar-track {
     background: transparent;
@@ -36,5 +37,47 @@
   }
   ::-webkit-scrollbar-thumb:hover {
     background: var(--color-text-3);
+  }
+
+  /* Global icon stroke rounding for sprite icons */
+  svg use[href^="/icons/sprite.svg"] {
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+}
+
+@layer utilities {
+  /* Glassmorphism utility */
+  .glass {
+    background: var(--glass-bg);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+  }
+
+  /* Text gradient utility */
+  .text-gradient {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--category-data) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Glow shadow utility */
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+
+  /* Section vertical rhythm */
+  .section-spacing {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+
+  @media (min-width: 1024px) {
+    .section-spacing {
+      padding-top: 6rem;
+      padding-bottom: 6rem;
+    }
   }
 }

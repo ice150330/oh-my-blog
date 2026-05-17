@@ -1,0 +1,111 @@
+{
+  "nav": {
+    "home": "Home",
+    "projects": "Projects",
+    "blog": "Blog",
+    "techStack": "Tech Stack",
+    "about": "About"
+  },
+  "hero": {
+    "badge": "Hello World, Creating",
+    "title": "Hi, I'm Wei.",
+    "subtitle": "Data Engineer · Full-Stack Developer",
+    "description": "I connect data and products with code, seeking elegant solutions between frontend, visualization, and AI engineering. Here I document my projects, tech, and thoughts.",
+    "ctaProjects": "View Projects",
+    "ctaAbout": "Learn More"
+  },
+  "home": {
+    "features": {
+      "dataViz": "Data Visualization",
+      "dataVizDesc": "Make complex data clear with ECharts & D3",
+      "aiEng": "AI Engineering",
+      "aiEngDesc": "RAG, Agent & LLM application practice",
+      "fullStack": "Full-Stack",
+      "fullStackDesc": "Vue 3, Vite & modern engineering"
+    },
+    "featured": "Featured Projects",
+    "viewAll": "View All",
+    "latest": "Latest Articles",
+    "ctaTitle": "Let's build something cool together.",
+    "ctaDesc": "If you also like to keep things simple, feel free to reach out.",
+    "ctaContact": "Contact Me",
+    "ctaResume": "View Resume"
+  },
+  "projects": {
+    "title": "Projects",
+    "subtitle": " real projects spanning AI agents, data analysis, business systems, and 3D simulation.",
+    "category": {
+      "all": "All",
+      "ai": "AI Agents",
+      "data": "Data Analysis",
+      "business": "Business Systems",
+      "algo": "Algorithms",
+      "meta": "Meta"
+    }
+  },
+  "blog": {
+    "title": "Blog Notes",
+    "subtitle": "Blog · Tech Essays · Project Retrospectives",
+    "filterAll": "All",
+    "filterFrontend": "Frontend",
+    "filterAiData": "AI & Data",
+    "filterAlgo": "Algorithms",
+    "filterThought": "Thoughts",
+    "search": "Search Articles",
+    "searchPlaceholder": "Search...",
+    "hotTags": "Hot Tags",
+    "archive": "Article Archive"
+  },
+  "techStack": {
+    "title": "Tech Stack",
+    "subtitle": "Frontend-centric, naturally extending into data visualization, AI engineering, and algorithm simulation",
+    "dimensions": "Skill Dimensions",
+    "byCategory": "By Category",
+    "categorySub": "Tech lists by domain · Click tags to see related projects & articles"
+  },
+  "about": {
+    "title": "About Me",
+    "name": "Wei",
+    "role": "Data Engineer · Full-Stack Developer",
+    "location": "China · Henan",
+    "intro1": "Hi, I'm Wei, a full-stack developer passionate about data and frontend engineering. Currently studying Data Science at Shangqiu Normal University, focusing on data visualization and AI engineering.",
+    "intro2": "I believe good technology should be like water — transparent, fluid, and everywhere. From Python data analysis to Vue 3 full-stack development, from ECharts visualization to LLM agent orchestration, I seek the most elegant solutions at the intersection of data and interface.",
+    "intro3": "In my spare time, I enjoy writing blog retrospectives, submitting PRs to open-source libraries, and experimenting with new tech stacks. This blog is a centralized showcase of all my projects and a window for me to engage with the world.",
+    "timeline": "Timeline",
+    "skills": "Skills",
+    "values": "Values",
+    "valueSimplicity": "Simplicity First",
+    "valueSimplicityDesc": "Remove all unnecessary complexity until nothing more can be removed.",
+    "valueDataDriven": "Data-Driven",
+    "valueDataDrivenDesc": "Let data speak, and let visualization make data speak for itself.",
+    "valueIteration": "Continuous Iteration",
+    "valueIterationDesc": "Build fast, validate fast, optimize fast.",
+    "ctaTitle": "Want to collaborate?",
+    "ctaDesc": "If you have any interesting project ideas, or just want to chat about tech, feel free to reach out.",
+    "ctaEmail": "Send Email"
+  },
+  "common": {
+    "prev": "Previous",
+    "next": "Next",
+    "back": "Back",
+    "readMore": "Read More",
+    "detail": "View Details",
+    "source": "Source",
+    "stars": "Stars",
+    "techStackCount": "Tech Stack",
+    "fullStackProject": "Full-Stack Project",
+    "readingTime": "min read",
+    "author": "Author",
+    "date": "Date",
+    "category": "Category",
+    "tags": "Tags",
+    "projectIntro": "Project Introduction",
+    "techArch": "Technical Architecture",
+    "coreHighlights": "Core Highlights",
+    "review": "Retrospective & Outlook",
+    "demoPreview": "Demo Preview",
+    "demoPlaceholder": "iframe embed area / or sub-project build output",
+    "notFound": "Not Found",
+    "backToList": "Back to List →"
+  }
+}

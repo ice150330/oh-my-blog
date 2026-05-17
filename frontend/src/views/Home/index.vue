@@ -1,5 +1,7 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted } from 'vue'
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { projects, featuredProjectIds } from '@/data/projects'
 import { articles } from '@/data/articles'
 import IconBadge from '@/components/ui/IconBadge.vue'
@@ -10,6 +12,8 @@ import GhostButton from '@/components/ui/GhostButton.vue'
 import TagChip from '@/components/ui/TagChip.vue'
 import CategoryBadge from '@/components/ui/CategoryBadge.vue'
 
+gsap.registerPlugin(ScrollTrigger)
+
 const featured = computed(() =>
   featuredProjectIds.map(id => projects.find(p => p.id === id)!).filter(Boolean)
 )
@@ -18,42 +22,102 @@ const activeIndex = ref(0)
 const currentProject = computed(() => featured.value[activeIndex.value])
 
 const latestArticles = articles.slice(0, 3)
+
+onMounted(() => {
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  if (reduced) return
+
+  // Hero stagger entrance
+  gsap.from('.hero-badge', { y: 20, opacity: 0, duration: 0.6, delay: 0.1, ease: 'power3.out' })
+  gsap.from('.hero-title', { y: 40, opacity: 0, duration: 0.8, delay: 0.2, ease: 'power3.out' })
+  gsap.from('.hero-subtitle', { y: 30, opacity: 0, duration: 0.7, delay: 0.35, ease: 'power3.out' })
+  gsap.from('.hero-desc', { y: 30, opacity: 0, duration: 0.7, delay: 0.45, ease: 'power3.out' })
+  gsap.from('.hero-cta', { y: 20, opacity: 0, duration: 0.6, delay: 0.6, ease: 'power3.out' })
+
+  // Brief Intro cards stagger
+  ScrollTrigger.create({
+    trigger: '.brief-intro',
+    start: 'top 85%',
+    once: true,
+    onEnter: () => {
+      gsap.from('.brief-intro .intro-card', {
+        y: 40, opacity: 0, duration: 0.7, stagger: 0.12, ease: 'power3.out'
+      })
+    }
+  })
+
+  // Featured section
+  ScrollTrigger.create({
+    trigger: '.featured-section',
+    start: 'top 85%',
+    once: true,
+    onEnter: () => {
+      gsap.from('.featured-section .featured-panel', {
+        y: 50, opacity: 0, duration: 0.8, stagger: 0.15, ease: 'power3.out'
+      })
+    }
+  })
+
+  // Article cards
+  ScrollTrigger.create({
+    trigger: '.latest-section',
+    start: 'top 85%',
+    once: true,
+    onEnter: () => {
+      gsap.from('.latest-section .article-item', {
+        y: 30, opacity: 0, duration: 0.6, stagger: 0.1, ease: 'power3.out'
+      })
+    }
+  })
+
+  // CTA Banner
+  ScrollTrigger.create({
+    trigger: '.cta-banner',
+    start: 'top 85%',
+    once: true,
+    onEnter: () => {
+      gsap.from('.cta-banner > *', {
+        y: 30, opacity: 0, duration: 0.7, stagger: 0.1, ease: 'power3.out'
+      })
+    }
+  })
+})
 </script>
 
 <template>
   <div>
     <!-- Hero -->
     <section
-      class="relative flex flex-col justify-center gap-6 min-h-[720px] px-6"
+      class="relative flex flex-col justify-center gap-6 min-h-[85vh] px-6"
       style="background: radial-gradient(circle at 85% 30%, var(--mesh-tint-1), var(--color-bg) 85%);"
     >
-      <div class="max-w-7xl mx-auto w-full">
+      <div class="max-w-[1400px] mx-auto w-full px-6 lg:px-10">
         <div
-          class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium"
+          class="hero-badge inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium"
           style="background: var(--color-primary-soft); color: var(--color-primary);"
         >
           <span class="w-1.5 h-1.5 rounded-full" style="background: var(--color-primary);" />
           你好世界,正在创造中
         </div>
         <h1
-          class="text-7xl md:text-8xl font-bold tracking-tight mt-4"
+          class="hero-title text-7xl md:text-8xl font-bold tracking-tight mt-4"
           style="font-family: var(--font-display); color: var(--color-text-1);"
         >
           你好,我是 Wei。
         </h1>
         <p
-          class="text-2xl md:text-[28px] mt-4"
+          class="hero-subtitle text-2xl md:text-[28px] mt-4"
           style="font-family: var(--font-accent); color: var(--color-text-2);"
         >
           数据工程师 · 全栈开发者
         </p>
         <p
-          class="text-[15px] leading-relaxed mt-4 max-w-[680px]"
+          class="hero-desc text-[15px] leading-relaxed mt-4 max-w-[680px]"
           style="color: var(--color-text-2);"
         >
           我用代码连接数据与产品,在前端、可视化与 AI 工程之间寻找简洁优雅的解法。这里记录我的项目、技术与思考。
         </p>
-        <div class="flex items-center gap-3 mt-8">
+        <div class="hero-cta flex items-center gap-3 mt-8">
           <PrimaryButton text="查看项目" to="/projects" />
           <GhostButton text="了解更多" to="/about" />
         </div>
@@ -61,9 +125,9 @@ const latestArticles = articles.slice(0, 3)
     </section>
 
     <!-- Brief Intro -->
-    <section class="max-w-7xl mx-auto px-6 py-12">
+    <section class="brief-intro max-w-[1400px] mx-auto px-6 lg:px-10 py-20">
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="flex flex-col gap-3">
+        <div class="intro-card flex flex-col gap-3 transition-transform duration-300 hover:-translate-y-1">
           <IconBadge icon="chart-column" />
           <h3 class="text-base font-semibold" style="color: var(--color-text-1);">数据可视化</h3>
           <p class="text-[13px] leading-relaxed" style="color: var(--color-text-2);">
@@ -88,7 +152,7 @@ const latestArticles = articles.slice(0, 3)
     </section>
 
     <!-- Featured Projects Carousel -->
-    <section class="max-w-7xl mx-auto px-6 py-12">
+    <section class="featured-section max-w-[1400px] mx-auto px-6 lg:px-10 py-20">
       <div class="flex items-end justify-between mb-8">
         <SectionTitle en="Featured" zh="精选项目" />
         <RouterLink
@@ -105,7 +169,7 @@ const latestArticles = articles.slice(0, 3)
 
       <div class="flex flex-col lg:flex-row gap-8 h-auto lg:h-[540px]">
         <!-- Left Panel -->
-        <div class="flex flex-col justify-center gap-5 w-full lg:w-[520px]">
+        <div class="featured-panel flex flex-col justify-center gap-5 w-full lg:w-[520px]">
           <span class="text-[13px] font-normal" style="font-family: var(--font-code); color: var(--color-text-3);">
             {{ String(activeIndex + 1).padStart(2, '0') }} / {{ String(featured.length).padStart(2, '0') }}
           </span>
@@ -165,7 +229,7 @@ const latestArticles = articles.slice(0, 3)
         </div>
 
         <!-- Right Panel -->
-        <div class="flex-1 flex flex-col justify-center gap-4 min-h-[400px]">
+        <div class="featured-panel flex-1 flex flex-col justify-center gap-4 min-h-[400px]">
           <div
             class="flex-1 rounded-2xl flex flex-col items-center justify-center gap-4 min-h-[320px] transition-all"
             style="
@@ -212,7 +276,7 @@ const latestArticles = articles.slice(0, 3)
     </section>
 
     <!-- Latest Articles -->
-    <section class="max-w-7xl mx-auto px-6 py-12">
+    <section class="latest-section max-w-[1400px] mx-auto px-6 lg:px-10 py-20">
       <div class="flex items-end justify-between mb-8">
         <SectionTitle en="Latest" zh="最新文章" />
         <RouterLink
@@ -231,13 +295,14 @@ const latestArticles = articles.slice(0, 3)
           v-for="article in latestArticles"
           :key="article.slug"
           :article="article"
+          class="article-item"
         />
       </div>
     </section>
 
     <!-- CTA Banner -->
     <section
-      class="flex flex-col items-center justify-center gap-4 text-center min-h-[280px] px-6"
+      class="cta-banner flex flex-col items-center justify-center gap-4 text-center min-h-[280px] px-6"
       style="background: radial-gradient(circle at 50% 50%, var(--mesh-tint-1), var(--mesh-tint-2));"
     >
       <h2

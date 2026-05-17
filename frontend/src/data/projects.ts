@@ -4,9 +4,11 @@ export const projects: Project[] = [
   {
     id: '1',
     title: 'AI 模拟面试官',
+    titleEn: 'AI Mock Interviewer',
     category: 'ai',
     tags: ['Vue3', 'FastAPI', 'Neo4j', 'Monaco'],
     description: '代码图谱面试官,沙箱执行 + 多智能体编排。基于 Neo4j 代码图谱与 LLM 的自动面试系统,让代码面试从题库模式走向拓扑追问模式。',
+    descriptionEn: 'Code graph interviewer with sandbox execution and multi-agent orchestration. An automated interview system based on Neo4j code graphs and LLMs, transforming interviews from question-bank mode to topological probing.',
     coverGradient: ['#DBEAFE', '#F3E8FF'],
     slug: 'ai-mock-interviewer',
     stars: 12,
@@ -15,9 +17,11 @@ export const projects: Project[] = [
   {
     id: '2',
     title: 'kdd-b 财报智能问数',
+    titleEn: 'KDD-B Financial Q&A',
     category: 'ai',
     tags: ['Vue3', 'FAISS', 'LLM', 'NL2SQL'],
     description: '自然语言查询财报 + RAG 检索。FAISS 向量检索召回 + 语义改写 + 表结构注入,让模型敢于查询真实业务库。',
+    descriptionEn: 'Natural language financial report queries with RAG retrieval. FAISS vector search + semantic rewriting + schema injection, enabling models to query real business databases confidently.',
     coverGradient: ['#DBEAFE', '#E0E7FF'],
     slug: 'kdd-b-financial-qa',
     stars: 8,
@@ -26,9 +30,11 @@ export const projects: Project[] = [
   {
     id: '3',
     title: '中国旅游分析与推荐',
+    titleEn: 'China Tourism Analysis',
     category: 'data',
     tags: ['Vue3', 'Tailwind', 'ECharts', 'sklearn'],
     description: '省份对比 + 热度预测 + 个性化推荐。基于 Python 数据分析与可视化,提供多维度旅游洞察与智能推荐。',
+    descriptionEn: 'Province comparison + popularity prediction + personalized recommendations. Python data analysis and visualization providing multi-dimensional tourism insights and intelligent recommendations.',
     coverGradient: ['#F3E8FF', '#EDE9FE'],
     slug: 'tourism-analysis',
     stars: 15,
@@ -37,9 +43,11 @@ export const projects: Project[] = [
   {
     id: '4',
     title: '淘宝用户行为画像',
+    titleEn: 'Taobao User Portrait',
     category: 'data',
     tags: ['Vue3', 'Tailwind', 'ECharts', 'Python'],
     description: '电商行为挖掘 + 用户画像。通过数据可视化展现用户购物行为模式,实现精准营销辅助决策。',
+    descriptionEn: 'E-commerce behavior mining and user profiling. Data visualization revealing shopping behavior patterns for precision marketing decision support.',
     coverGradient: ['#F3E8FF', '#FAE8FF'],
     slug: 'taobao-user-portrait',
     stars: 10,
@@ -48,9 +56,11 @@ export const projects: Project[] = [
   {
     id: '5',
     title: 'IT 岗位分析平台',
+    titleEn: 'IT Job Analysis Platform',
     category: 'data',
     tags: ['React', 'Tailwind', 'Vite'],
     description: '拉勾岗位数据多维分析(唯一 React 项目)。覆盖薪资、技能要求、地域分布等维度的深度数据洞察。',
+    descriptionEn: 'Multi-dimensional analysis of Lagou job data (the only React project). Deep insights covering salary, skill requirements, and geographic distribution.',
     coverGradient: ['#DBEAFE', '#E0F2FE'],
     slug: 'it-job-analysis',
     stars: 6,
@@ -59,9 +69,11 @@ export const projects: Project[] = [
   {
     id: '6',
     title: '多源新闻舆情分析',
+    titleEn: 'News Sentiment Analysis',
     category: 'data',
     tags: ['Vue3', 'Naive UI', 'NLP'],
     description: '新闻采集 + 情感分析 + 主题建模。聚合多源新闻数据,通过 NLP 技术实现舆情监测与情感倾向分析。',
+    descriptionEn: 'News aggregation + sentiment analysis + topic modeling. Aggregating multi-source news data with NLP for public opinion monitoring and sentiment analysis.',
     coverGradient: ['#FAE8FF', '#FCE7F3'],
     slug: 'news-sentiment-analysis',
     stars: 9,
@@ -70,9 +82,11 @@ export const projects: Project[] = [
   {
     id: '7',
     title: '智存空间·校园物品托管',
+    titleEn: 'Campus Storage System',
     category: 'business',
     tags: ['Vue3', 'Element Plus', 'ECharts'],
     description: '校园仓储 Web 多端管理系统。面向高校的物品寄存与托管服务,支持预约、计费、通知一体化管理。',
+    descriptionEn: 'Campus storage Web multi-terminal management system. Item deposit and custody services for universities with booking, billing, and notifications.',
     coverGradient: ['#ECFEFF', '#CFFAFE'],
     slug: 'campus-storage',
     stars: 7,
@@ -81,9 +95,11 @@ export const projects: Project[] = [
   {
     id: '8',
     title: 'DatanaHub 数据中枢',
+    titleEn: 'DatanaHub Data Hub',
     category: 'business',
     tags: ['Vue3', 'TS', 'Vite'],
     description: '数据中台前端骨架。企业级数据平台的前端架构设计,包含数据接入、处理、可视化全链路。',
+    descriptionEn: 'Data mid-end frontend skeleton. Enterprise data platform frontend architecture covering data ingestion, processing, and visualization pipelines.',
     coverGradient: ['#ECFEFF', '#E0F2FE'],
     slug: 'datana-hub',
     stars: 5,
@@ -92,9 +108,11 @@ export const projects: Project[] = [
   {
     id: '9',
     title: '城市低空无人机路径规划',
+    titleEn: 'UAV Path Planning',
     category: 'algo',
     tags: ['Vue3', 'Cesium', 'A*'],
     description: '26 邻域 A* + 风场 3D 仿真。城市低空环境下的无人机航线智能规划,支持风场约束与实时避障。',
+    descriptionEn: '26-neighborhood A* + wind field 3D simulation. Intelligent UAV route planning in urban low-altitude environments with wind constraints and real-time obstacle avoidance.',
     coverGradient: ['#FFF7ED', '#FFEDD5'],
     slug: 'uav-path-planning',
     stars: 20,
@@ -103,9 +121,11 @@ export const projects: Project[] = [
   {
     id: '10',
     title: 'portfolio-blog-v3',
+    titleEn: 'Portfolio Blog v3',
     category: 'meta',
     tags: ['Nuxt3', 'GSAP', 'Spring Boot'],
     description: '当前博客的前身,Nuxt 3 + Spring Boot 全栈方案。本仓库去掉了后端,改走 SSG,保留设计语言传承。',
+    descriptionEn: 'The predecessor of this blog, a Nuxt 3 + Spring Boot full-stack solution. The backend was removed in favor of SSG while preserving the design language.',
     coverGradient: ['#F4F4F5', '#E4E4E7'],
     slug: 'portfolio-blog-v3',
     stars: 31,
@@ -114,9 +134,11 @@ export const projects: Project[] = [
   {
     id: '11',
     title: 'opencode Skills v3.1',
+    titleEn: 'Opencode Skills v3.1',
     category: 'meta',
     tags: ['Claude Code', 'YAML', 'Markdown', 'Skills'],
     description: '根本指令驱动 + 任务复杂度评估,自动路由专家协作的智能编码代理工作流。一套为 Claude Code 设计的技能路由与专家协作体系。',
+    descriptionEn: 'Root-instruction driven + task complexity evaluation, intelligent coding agent workflow with automatic expert routing. A skill routing and expert collaboration system for Claude Code.',
     coverGradient: ['#F4F4F5', '#E4E4E7'],
     slug: 'opencode-skills',
     stars: 5,
@@ -130,6 +152,14 @@ export const categoryLabels: Record<string, string> = {
   business: '业务系统',
   algo: '算法仿真',
   meta: '元项目',
+}
+
+export const categoryLabelsEn: Record<string, string> = {
+  ai: 'AI Agents',
+  data: 'Data Analysis',
+  business: 'Business Systems',
+  algo: 'Algorithms',
+  meta: 'Meta',
 }
 
 export const categoryColors: Record<string, string> = {

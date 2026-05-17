@@ -1,40 +1,75 @@
 <script setup lang="ts">
+import { onMounted } from 'vue'
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { useI18n } from 'vue-i18n'
 import { skills, techCategories, stats } from '@/data/techStack'
 import SectionTitle from '@/components/ui/SectionTitle.vue'
 import SkillBar from '@/components/ui/SkillBar.vue'
 import StatItem from '@/components/ui/StatItem.vue'
 import IconBadge from '@/components/ui/IconBadge.vue'
+
+gsap.registerPlugin(ScrollTrigger)
+const { t } = useI18n()
+
+onMounted(() => {
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  if (reduced) return
+
+  gsap.from('.tech-header', { y: 30, opacity: 0, duration: 0.7, ease: 'power3.out' })
+
+  ScrollTrigger.create({
+    trigger: '.radar-section',
+    start: 'top 85%',
+    once: true,
+    onEnter: () => {
+      gsap.from('.radar-section > *', { y: 40, opacity: 0, duration: 0.8, stagger: 0.15, ease: 'power3.out' })
+    }
+  })
+
+  ScrollTrigger.create({
+    trigger: '.category-grid',
+    start: 'top 85%',
+    once: true,
+    onEnter: () => {
+      gsap.from('.category-grid > div', { y: 40, opacity: 0, scale: 0.98, duration: 0.7, stagger: 0.1, ease: 'power3.out' })
+    }
+  })
+
+  ScrollTrigger.create({
+    trigger: '.stats-bar',
+    start: 'top 85%',
+    once: true,
+    onEnter: () => {
+      gsap.from('.stats-bar > div', { y: 30, opacity: 0, duration: 0.6, stagger: 0.08, ease: 'power3.out' })
+    }
+  })
+})
 </script>
 
 <template>
-  <div class="max-w-7xl mx-auto px-6 py-12">
-    <!-- Header -->
-    <div class="flex flex-col items-center text-center mb-16">
-      <SectionTitle en="Tech Stack" zh="技术栈" />
+  <div class="max-w-[1400px] mx-auto px-6 lg:px-10 py-20">
+    <div class="tech-header flex flex-col items-center text-center mb-16">
+      <SectionTitle en="Tech Stack" :zh="t('techStack.title')" />
       <p class="text-base mt-3" style="font-family: var(--font-accent); color: var(--color-text-2);">
-        以前端为主轴,向数据可视化、AI 工程、算法仿真自然延伸
+        {{ t('techStack.subtitle') }}
       </p>
     </div>
 
-    <!-- Radar + Skills -->
-    <div class="flex flex-col lg:flex-row items-center gap-12 mb-16">
-      <!-- Radar Placeholder -->
+    <div class="radar-section flex flex-col lg:flex-row items-center gap-12 mb-16">
       <div class="w-full lg:w-[560px] aspect-square rounded-3xl flex items-center justify-center relative overflow-hidden" style="background: var(--color-bg-elevated); border: 1px solid var(--color-border);">
-        <!-- Decorative rings -->
         <div class="absolute w-[360px] h-[360px] rounded-full border" style="border-color: var(--color-border);" />
         <div class="absolute w-[240px] h-[240px] rounded-full border" style="border-color: var(--color-border);" />
         <div class="absolute w-[120px] h-[120px] rounded-full border" style="border-color: var(--color-border);" />
-        <!-- Center label -->
         <div class="flex flex-col items-center gap-2 z-10">
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color: var(--color-primary);"><use href="/icons/sprite.svg#chart-column" /></svg>
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-primary);"><use href="/icons/sprite.svg#chart-column" /></svg>
           <span class="text-sm font-medium" style="color: var(--color-text-3); font-family: var(--font-code);">Skill Radar</span>
         </div>
       </div>
 
-      <!-- Skills Column -->
       <div class="flex-1 w-full">
         <h4 class="text-[13px] font-bold tracking-widest mb-5" style="color: var(--color-text-3); font-family: var(--font-display);">
-          6 大能力维度
+          6 {{ t('techStack.dimensions') }}
         </h4>
         <div class="flex flex-col gap-5">
           <SkillBar
@@ -47,13 +82,12 @@ import IconBadge from '@/components/ui/IconBadge.vue'
       </div>
     </div>
 
-    <!-- Category Grid -->
-    <div class="mb-16">
+    <div class="category-grid mb-16">
       <h2 class="text-4xl font-bold tracking-tight mb-2" style="font-family: var(--font-display); color: var(--color-text-1);">
-        按领域分类
+        {{ t('techStack.byCategory') }}
       </h2>
       <p class="text-sm mb-8" style="font-family: var(--font-accent); color: var(--color-text-2);">
-        按领域细分的技术列表 · 点击标签查看相关项目与文章
+        {{ t('techStack.categorySub') }}
       </p>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div
@@ -83,8 +117,7 @@ import IconBadge from '@/components/ui/IconBadge.vue'
       </div>
     </div>
 
-    <!-- Stats Bar -->
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+    <div class="stats-bar grid grid-cols-2 md:grid-cols-4 gap-6">
       <StatItem
         v-for="stat in stats"
         :key="stat.label"

@@ -1,0 +1,111 @@
+{
+  "nav": {
+    "home": "首页",
+    "projects": "项目",
+    "blog": "博客",
+    "techStack": "技术栈",
+    "about": "关于"
+  },
+  "hero": {
+    "badge": "你好世界，正在创造中",
+    "title": "你好，我是 Wei。",
+    "subtitle": "数据工程师 · 全栈开发者",
+    "description": "我用代码连接数据与产品，在前端、可视化与 AI 工程之间寻找简洁优雅的解法。这里记录我的项目、技术与思考。",
+    "ctaProjects": "查看项目",
+    "ctaAbout": "了解更多"
+  },
+  "home": {
+    "features": {
+      "dataViz": "数据可视化",
+      "dataVizDesc": "用 ECharts 与 D3 把复杂数据讲清楚",
+      "aiEng": "AI 工程",
+      "aiEngDesc": "RAG、Agent 与 LLM 应用落地实践",
+      "fullStack": "全栈开发",
+      "fullStackDesc": "Vue 3、Vite 与现代工程化体系"
+    },
+    "featured": "精选项目",
+    "viewAll": "查看全部",
+    "latest": "最新文章",
+    "ctaTitle": "一起做点有意思的事吧。",
+    "ctaDesc": "如果你也喜欢把复杂的事情做得简单，欢迎联系。",
+    "ctaContact": "联系我",
+    "ctaResume": "查看简历"
+  },
+  "projects": {
+    "title": "项目集",
+    "subtitle": "个真实项目，从 AI 智能体、数据分析、业务系统到三维仿真，覆盖个人作品全景。",
+    "category": {
+      "all": "全部",
+      "ai": "AI 智能体",
+      "data": "数据分析",
+      "business": "业务系统",
+      "algo": "算法仿真",
+      "meta": "元项目"
+    }
+  },
+  "blog": {
+    "title": "博客笔记",
+    "subtitle": "博客 · 技术随笔 · 项目复盘",
+    "filterAll": "全部",
+    "filterFrontend": "前端",
+    "filterAiData": "AI 数据",
+    "filterAlgo": "算法",
+    "filterThought": "思考",
+    "search": "搜索文章",
+    "searchPlaceholder": "搜索...",
+    "hotTags": "热门标签",
+    "archive": "文章归档"
+  },
+  "techStack": {
+    "title": "技术栈",
+    "subtitle": "以前端为主轴，向数据可视化、AI 工程、算法仿真自然延伸",
+    "dimensions": "大能力维度",
+    "byCategory": "按领域分类",
+    "categorySub": "按领域细分的技术列表 · 点击标签查看相关项目与文章"
+  },
+  "about": {
+    "title": "关于我",
+    "name": "Wei",
+    "role": "数据工程师 · 全栈开发者",
+    "location": "中国 · 河南",
+    "intro1": "你好，我是 Wei，一名热爱数据与前端工程的全栈开发者。目前就读于商丘师范学院数据科学与大数据技术专业，主攻数据可视化与 AI 工程方向。",
+    "intro2": "我相信好的技术应该像水一样——透明、流动、无处不在。从 Python 数据分析到 Vue 3 全栈开发，从 ECharts 可视化到 LLM 智能体编排，我在数据与界面的交汇处寻找最优雅的解法。",
+    "intro3": "业余时间，我喜欢写博客复盘项目、给开源库提 PR、尝试各种新技术栈。这个博客是我所有项目的集中展示，也是我与世界对话的窗口。",
+    "timeline": "经历时间线",
+    "skills": "技能评分",
+    "values": "价值观",
+    "valueSimplicity": "简洁至上",
+    "valueSimplicityDesc": "删除一切不必要的复杂度，直到无法再删。",
+    "valueDataDriven": "数据驱动",
+    "valueDataDrivenDesc": "用数据说话，用可视化让数据自己会说话。",
+    "valueIteration": "持续迭代",
+    "valueIterationDesc": "快速构建、快速验证、快速优化。",
+    "ctaTitle": "一起合作？",
+    "ctaDesc": "如果你有任何有趣的项目想法，或者只是想聊聊技术，欢迎随时联系。",
+    "ctaEmail": "发送邮件"
+  },
+  "common": {
+    "prev": "上一篇",
+    "next": "下一篇",
+    "back": "返回",
+    "readMore": "阅读更多",
+    "detail": "查看详情",
+    "source": "源码",
+    "stars": "星标",
+    "techStackCount": "技术栈",
+    "fullStackProject": "全栈项目",
+    "readingTime": "分钟阅读",
+    "author": "作者",
+    "date": "日期",
+    "category": "分类",
+    "tags": "标签",
+    "projectIntro": "项目介绍",
+    "techArch": "技术架构",
+    "coreHighlights": "核心亮点",
+    "review": "复盘与展望",
+    "demoPreview": "Demo 预览",
+    "demoPlaceholder": "iframe 嵌入区域 / 或子项目构建产物",
+    "notFound": "未找到",
+    "backToList": "返回列表 →"
+  }
+}

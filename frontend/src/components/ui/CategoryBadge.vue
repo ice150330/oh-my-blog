@@ -16,8 +16,11 @@ const colorMap: Record<string, string> = {
 
 <template>
   <span
-    class="inline-flex items-center px-2.5 py-[3px] rounded-full text-[11px] font-semibold text-white whitespace-nowrap"
-    :style="{ background: colorMap[category] }"
+    class="inline-flex items-center px-2.5 py-[3px] rounded-full text-[11px] font-semibold text-white whitespace-nowrap shadow-sm"
+    :style="{
+      background: colorMap[category],
+      boxShadow: `0 2px 8px ${colorMap[category]}40`,
+    }"
   >
     {{ categoryLabels[category] }}
   </span>

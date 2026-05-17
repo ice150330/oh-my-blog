@@ -11,20 +11,24 @@ defineProps<{
 <template>
   <RouterLink
     :to="`/projects/${project.slug}`"
-    class="group flex flex-col rounded-xl overflow-hidden transition-all hover:-translate-y-1 cursor-pointer"
+    class="group flex flex-col rounded-xl overflow-hidden transition-all duration-500 cursor-pointer"
     style="background: var(--color-card); border: 1px solid var(--color-border);"
   >
     <div
-      class="h-[200px] w-full relative flex items-start justify-start p-4"
+      class="h-[200px] w-full relative flex items-start justify-start p-4 transition-transform duration-700 group-hover:scale-105"
       :style="{
         background: `radial-gradient(circle at 30% 40%, ${project.coverGradient[0]}, ${project.coverGradient[1]})`,
       }"
     >
+      <div
+        class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+        style="background: linear-gradient(to bottom, transparent 0%, var(--color-card) 100%);"
+      />
       <CategoryBadge :category="project.category" />
     </div>
-    <div class="flex flex-col gap-3 p-4">
+    <div class="flex flex-col gap-3 p-5 relative">
       <h3
-        class="text-xl font-bold truncate"
+        class="text-xl font-bold truncate transition-colors duration-300 group-hover:text-[var(--color-primary)]"
         style="font-family: var(--font-accent); color: var(--color-text-1);"
       >
         {{ project.title }}
@@ -43,5 +47,9 @@ defineProps<{
         />
       </div>
     </div>
+    <div
+      class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-xl"
+      style="box-shadow: var(--shadow-glow);"
+    />
   </RouterLink>
 </template>
