@@ -1,5 +1,8 @@
+// ============================================================
 // Design Tokens — synced with pencil/mylogo.pen
+// ============================================================
 
+// -------------------- Theme: Light --------------------
 :root {
   --color-bg: #FAFAFA;
   --color-bg-elevated: #FFFFFF;
@@ -10,29 +13,22 @@
   --color-border: #E4E4E7;
   --color-border-strong: #D4D4D8;
   --color-primary: #2563EB;
+  --color-primary-soft: #DBEAFE;
   --color-success: #10B981;
   --color-warning: #F59E0B;
   --color-danger: #EF4444;
-  --glow-primary: #2563EB26;
+  --glow-primary: #{rgba(#2563EB, 0.15)};
   --mesh-tint-1: #DBEAFE;
   --mesh-tint-2: #F3E8FF;
 
-  --radius-sm: 6px;
-  --radius-md: 8px;
-  --radius-lg: 12px;
-  --radius-xl: 16px;
-  --radius-pill: 999px;
-
-  --space-1: 4px;
-  --space-2: 8px;
-  --space-3: 12px;
-  --space-4: 16px;
-  --space-6: 24px;
-  --space-8: 32px;
-  --space-12: 48px;
-  --space-16: 64px;
+  --category-ai: #2563EB;
+  --category-data: #8B5CF6;
+  --category-business: #06B6D4;
+  --category-algo: #F97316;
+  --category-meta: #71717A;
 }
 
+// -------------------- Theme: Dark --------------------
 [data-theme='dark'] {
   --color-bg: #0F172A;
   --color-bg-elevated: #1E293B;
@@ -43,7 +39,122 @@
   --color-border: #334155;
   --color-border-strong: #475569;
   --color-primary: #3B82F6;
-  --glow-primary: #3B82F640;
+  --color-primary-soft: #1E3A8A;
+  --color-success: #10B981;
+  --color-warning: #F59E0B;
+  --color-danger: #EF4444;
+  --glow-primary: #{rgba(#3B82F6, 0.25)};
   --mesh-tint-1: #1E3A8A;
   --mesh-tint-2: #4C1D95;
+
+  --category-ai: #3B82F6;
+  --category-data: #A78BFA;
+  --category-business: #22D3EE;
+  --category-algo: #FB923C;
+  --category-meta: #94A3B8;
+}
+
+// -------------------- Spacing --------------------
+:root {
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+}
+
+// -------------------- Radius --------------------
+:root {
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-pill: 999px;
+}
+
+// -------------------- Font Families --------------------
+@font-face {
+  font-family: 'Source Han Sans SC';
+  src: url('/fonts/SourceHanSansSC-subset.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('/fonts/JetBrainsMono.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Sarasa Mono SC';
+  src: url('/fonts/SarasaMonoSC-subset.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Library 3 AM';
+  src: url('/fonts/Library-3-am-3.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'DongMan ErCiYuan';
+  src: url('/fonts/DongManErCiYuan-subset.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PixelTi';
+  src: url('/fonts/PixelTi-subset.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --font-body:
+    'Source Han Sans SC',
+    'Noto Sans SC',
+    'PingFang SC',
+    'Microsoft YaHei',
+    sans-serif;
+
+  --font-code:
+    'JetBrains Mono',
+    'Sarasa Mono SC',
+    'Fira Code',
+    monospace;
+
+  --font-display:
+    'Library 3 AM',
+    'Archivo',
+    'Space Grotesk',
+    sans-serif;
+
+  --font-accent:
+    'DongMan ErCiYuan',
+    'PingFang SC',
+    'Source Han Sans SC',
+    sans-serif;
+
+  --font-pixel:
+    'PixelTi',
+    'Courier New',
+    monospace;
 }

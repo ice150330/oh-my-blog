@@ -8,12 +8,14 @@ const navLinks = [
 </script>
 
 <template>
-  <footer class="border-t" style="background: var(--color-bg); border-color: var(--color-border);">
+  <footer class="border-t" style="background: var(--color-bg-elevated); border-color: var(--color-border);">
     <div class="max-w-7xl mx-auto px-6 py-16">
-      <div class="grid grid-cols-3 gap-12">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
         <div>
           <h3 class="text-lg font-bold mb-2" style="color: var(--color-text-1);">oh-my-blog</h3>
-          <p class="text-sm" style="color: var(--color-text-2);">面向数据工程师的现代博客,记录从代码到产品的思考。</p>
+          <p class="text-sm leading-relaxed" style="color: var(--color-text-2);">
+            面向数据工程师的现代博客,记录从代码到产品的思考。
+          </p>
         </div>
         <div>
           <h4 class="text-sm font-semibold mb-4" style="color: var(--color-text-1);">导航</h4>
@@ -32,17 +34,22 @@ const navLinks = [
         <div>
           <h4 class="text-sm font-semibold mb-4" style="color: var(--color-text-1);">联系</h4>
           <div class="flex gap-3">
-            <a href="#" class="w-9 h-9 rounded-lg flex items-center justify-center border" style="border-color: var(--color-border);">
-              <span class="text-xs" style="color: var(--color-text-2);">GH</span>
+            <a href="#" class="w-9 h-9 rounded-lg flex items-center justify-center border transition-colors hover:border-[var(--color-primary)]" style="border-color: var(--color-border);">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--color-text-2);">
+                <use href="/icons/sprite.svg#github" />
+              </svg>
             </a>
-            <a href="#" class="w-9 h-9 rounded-lg flex items-center justify-center border" style="border-color: var(--color-border);">
-              <span class="text-xs" style="color: var(--color-text-2);">Mail</span>
+            <a href="#" class="w-9 h-9 rounded-lg flex items-center justify-center border transition-colors hover:border-[var(--color-primary)]" style="border-color: var(--color-border);">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--color-text-2);">
+                <use href="/icons/sprite.svg#mail" />
+              </svg>
             </a>
           </div>
         </div>
       </div>
-      <div class="mt-12 pt-6 border-t text-center text-xs" style="border-color: var(--color-border); color: var(--color-text-3);">
-        © 2026 Wei. 保留所有权利。 · 由 Vue 3 + Vite 驱动构建
+      <div class="mt-12 pt-6 border-t flex flex-col sm:flex-row items-center justify-between gap-2 text-xs" style="border-color: var(--color-border); color: var(--color-text-3);">
+        <span>© 2026 Wei. 保留所有权利。</span>
+        <span style="font-family: var(--font-code);">由 Vue 3 + Vite 驱动构建</span>
       </div>
     </div>
   </footer>
