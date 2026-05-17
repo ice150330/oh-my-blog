@@ -57,6 +57,62 @@
   animation: float 3s ease-in-out infinite;
 }
 
+// ==================== Starfield Background ====================
+
+.starfield-bg {
+  position: relative;
+  background: var(--starfield-base);
+}
+
+.starfield-bg::before,
+.starfield-bg::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* 小星星层 - 1px 淡色点 */
+.starfield-bg::before {
+  width: 1px;
+  height: 1px;
+  color: var(--starfield-sm-color);
+  background: transparent;
+  box-shadow:
+    5vw 8vh, 12vw 3vh, 18vw 15vh, 25vw 6vh, 32vw 20vh,
+    38vw 10vh, 45vw 25vh, 52vw 5vh, 58vw 18vh, 65vw 30vh,
+    72vw 12vh, 78vw 28vh, 85vw 8vh, 92vw 22vh, 8vw 35vh,
+    15vw 42vh, 22vw 33vh, 28vw 48vh, 35vw 38vh, 42vw 55vh,
+    48vw 45vh, 55vw 60vh, 62vw 50vh, 68vw 65vh, 75vw 40vh,
+    82vw 58vh, 88vw 72vh, 95vw 45vh, 3vw 62vh, 10vw 75vh,
+    17vw 68vh, 23vw 82vh, 30vw 70vh, 37vw 88vh, 44vw 78vh,
+    50vw 92vh, 57vw 80vh, 63vw 95vh, 70vw 85vh, 77vw 98vh,
+    83vw 88vh, 90vw 75vh, 97vw 90vh, 6vw 95vh, 14vw 88vh,
+    20vw 98vh, 27vw 92vh, 33vw 85vh, 40vw 95vh, 47vw 90vh,
+    53vw 98vh, 60vw 85vh, 67vw 92vh, 73vw 88vh, 80vw 95vh,
+    87vw 90vh, 93vw 98vh, 2vw 50vh, 50vw 2vh, 98vw 50vh;
+}
+
+/* 大星星层 - 2px 带微光晕 */
+.starfield-bg::after {
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  color: var(--starfield-lg-color);
+  background: transparent;
+  box-shadow:
+    8vw 12vh 1px -0.5px, 20vw 8vh 0 0, 35vw 22vh 1px -0.5px,
+    48vw 15vh 0 0, 60vw 28vh 1px -0.5px, 75vw 10vh 0 0,
+    88vw 25vh 1px -0.5px, 15vw 38vh 0 0, 28vw 52vh 1px -0.5px,
+    42vw 42vh 0 0, 55vw 55vh 1px -0.5px, 68vw 35vh 0 0,
+    80vw 48vh 1px -0.5px, 92vw 62vh 0 0, 10vw 68vh 1px -0.5px,
+    22vw 78vh 0 0, 38vw 72vh 1px -0.5px, 50vw 85vh 0 0,
+    65vw 75vh 1px -0.5px, 78vw 88vh 0 0, 90vw 82vh 1px -0.5px,
+    5vw 92vh 0 0, 30vw 95vh 1px -0.5px, 55vw 92vh 0 0,
+    85vw 95vh 1px -0.5px;
+}
+
 // 减少动画偏好
 @media (prefers-reduced-motion: reduce) {
   .animate-pulse-glow,

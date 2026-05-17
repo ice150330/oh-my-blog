@@ -9,13 +9,15 @@ const theme = useThemeStore()
 </script>
 
 <template>
-  <div :data-theme="theme.mode" class="min-h-screen flex flex-col transition-colors duration-300" style="background: var(--color-bg);">
-    <ScrollProgress />
-    <NavBar />
-    <main class="flex-1">
-      <RouterView />
-    </main>
-    <AppFooter />
-    <BackToTop />
+  <div :data-theme="theme.mode" class="starfield-bg min-h-screen flex flex-col transition-colors duration-300">
+    <div class="relative z-10 flex flex-col flex-1">
+      <ScrollProgress />
+      <NavBar />
+      <main class="flex-1">
+        <RouterView />
+      </main>
+      <AppFooter />
+      <BackToTop />
+    </div>
   </div>
 </template>

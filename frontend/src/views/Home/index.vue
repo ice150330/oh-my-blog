@@ -89,7 +89,7 @@ onMounted(() => {
     <!-- Hero -->
     <section
       class="relative flex flex-col justify-center gap-6 min-h-[85vh] px-6"
-      style="background: radial-gradient(circle at 85% 30%, var(--mesh-tint-1), var(--color-bg) 85%);"
+      style="background: radial-gradient(circle at 85% 30%, var(--mesh-tint-1), transparent 85%);"
     >
       <div class="max-w-[1400px] mx-auto w-full px-6 lg:px-10">
         <div
