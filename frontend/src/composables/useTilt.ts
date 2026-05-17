@@ -1,10 +1,18 @@
 import { ref, onMounted, onUnmounted } from 'vue'
 
-export function useTilt(elRef: { value: HTMLElement | null }, max = 8) {
+function getElement(refValue: unknown): HTMLElement | null {
+  if (!refValue) return null
+  if (refValue instanceof HTMLElement) return refValue
+  const component = refValue as { $el?: unknown }
+  if (component.$el instanceof HTMLElement) return component.$el
+  return null
+}
+
+export function useTilt(elRef: { value: unknown }, max = 8) {
   const style = ref({ transform: '', transition: '' })
 
   const handleMove = (e: MouseEvent) => {
-    const el = elRef.value
+    const el = getElement(elRef.value)
     if (!el) return
     const rect = el.getBoundingClientRect()
     const x = e.clientX - rect.left
@@ -27,14 +35,14 @@ export function useTilt(elRef: { value: HTMLElement | null }, max = 8) {
   }
 
   onMounted(() => {
-    const el = elRef.value
+    const el = getElement(elRef.value)
     if (!el) return
     el.addEventListener('mousemove', handleMove)
     el.addEventListener('mouseleave', handleLeave)
   })
 
   onUnmounted(() => {
-    const el = elRef.value
+    const el = getElement(elRef.value)
     if (!el) return
     el.removeEventListener('mousemove', handleMove)
     el.removeEventListener('mouseleave', handleLeave)
