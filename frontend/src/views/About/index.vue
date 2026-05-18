@@ -51,11 +51,24 @@ onUnmounted(() => {
     <div class="flex flex-col lg:flex-row gap-12">
       <div class="about-left w-full lg:w-[480px] flex flex-col gap-8">
         <div class="flex flex-col items-center gap-5 rounded-2xl p-8" style="background: var(--color-card); border: 1px solid var(--color-border);">
-          <div
-            class="w-[140px] h-[140px] sm:w-[160px] sm:h-[160px] md:w-[200px] md:h-[200px] rounded-full flex items-center justify-center text-3xl sm:text-4xl md:text-5xl font-bold"
-            style="background: radial-gradient(circle at 40% 40%, var(--mesh-tint-1), var(--mesh-tint-2)); font-family: var(--font-display); color: var(--color-primary);"
-          >
-            W
+          <div class="relative w-[148px] h-[148px] sm:w-[168px] sm:h-[168px] md:w-[208px] md:h-[208px]">
+            <!-- 旋转边框环 -->
+            <div
+              class="absolute inset-0 rounded-full animate-spin-slow"
+              style="background: conic-gradient(from 0deg, var(--color-primary), var(--mesh-tint-1), var(--mesh-tint-2), var(--color-primary));"
+            ></div>
+            <!-- 环内侧遮罩,形成细环效果 -->
+            <div
+              class="absolute inset-[2px] rounded-full"
+              style="background: var(--color-card);"
+            ></div>
+            <!-- 头像主体 -->
+            <div
+              class="absolute inset-[4px] rounded-full flex items-center justify-center text-3xl sm:text-4xl md:text-5xl font-bold animate-pulse-glow"
+              style="background: radial-gradient(circle at 40% 40%, var(--mesh-tint-1), var(--mesh-tint-2)); font-family: var(--font-display); color: var(--color-primary);"
+            >
+              W
+            </div>
           </div>
           <div class="flex flex-col items-center gap-1">
             <h1 class="text-2xl font-bold" style="font-family: var(--font-display); color: var(--color-text-1);">{{ t('about.name') }}</h1>

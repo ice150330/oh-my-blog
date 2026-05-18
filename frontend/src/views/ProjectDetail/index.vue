@@ -120,20 +120,31 @@ onUnmounted(() => {
         <p class="text-[15px] leading-relaxed" style="color: var(--color-text-2);">
           {{ locale === 'zh' ? project.description : (project.descriptionEn || project.description) }}
         </p>
+
         <h3 class="text-lg font-semibold mt-2" style="color: var(--color-text-1);">{{ t('common.techArch') }}</h3>
         <p class="text-[15px] leading-relaxed" style="color: var(--color-text-2);">
-          {{ t('common.techArch') }} {{ project.tags.join('、') }}
+          {{ locale === 'zh'
+            ? (project.techArchDetail || `${t('common.techArch')}: ${project.tags.join('、')}`)
+            : (project.techArchDetailEn || project.techArchDetail || `${t('common.techArch')}: ${project.tags.join(', ')}`)
+          }}
         </p>
+
         <h3 class="text-lg font-semibold mt-2" style="color: var(--color-text-1);">{{ t('common.coreHighlights') }}</h3>
         <ul class="flex flex-col gap-2 list-disc list-inside text-[15px] leading-relaxed" style="color: var(--color-text-2);">
-          <li>模块化架构设计,支持功能按需加载与扩展</li>
-          <li>数据可视化层采用 ECharts / D3.js,实现交互式图表</li>
-          <li>工程化配置完善,包含 ESLint、Prettier、CI/CD 流水线</li>
-          <li>响应式布局适配,覆盖桌面端与移动端场景</li>
+          <li v-for="(hl, i) in (locale === 'zh'
+            ? (project.highlights || ['模块化架构设计,支持功能按需加载与扩展', '数据可视化层采用 ECharts / D3.js,实现交互式图表', '工程化配置完善,包含 ESLint、Prettier、CI/CD 流水线', '响应式布局适配,覆盖桌面端与移动端场景'])
+            : (project.highlightsEn || project.highlights || ['Modular architecture supporting on-demand loading and extension', 'Data visualization layer using ECharts / D3.js for interactive charts', 'Complete engineering setup with ESLint, Prettier, and CI/CD pipelines', 'Responsive layout covering desktop and mobile scenarios'])
+          )" :key="i">
+            {{ hl }}
+          </li>
         </ul>
+
         <h3 class="text-lg font-semibold mt-2" style="color: var(--color-text-1);">{{ t('common.review') }}</h3>
         <p class="text-[15px] leading-relaxed" style="color: var(--color-text-2);">
-          {{ t('common.review') }}
+          {{ locale === 'zh'
+            ? (project.review || t('common.review'))
+            : (project.reviewEn || project.review || t('common.review'))
+          }}
         </p>
       </div>
 

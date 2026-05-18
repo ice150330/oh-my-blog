@@ -12,6 +12,15 @@ export interface Project {
   slug: string
   stars?: number
   techCount?: number
+  /** 项目特定核心亮点，替代通用模板 */
+  highlights?: string[]
+  highlightsEn?: string[]
+  /** 技术架构详细描述 */
+  techArchDetail?: string
+  techArchDetailEn?: string
+  /** 复盘总结 */
+  review?: string
+  reviewEn?: string
 }
 
 export interface Article {
