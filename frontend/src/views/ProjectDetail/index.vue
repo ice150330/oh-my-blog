@@ -100,6 +100,21 @@ onUnmounted(() => {
       <GhostButton v-if="project.repoUrl" :text="t('common.source') + ' →'" :href="project.repoUrl" />
     </div>
 
+    <div class="max-w-[1400px] mx-auto px-6 lg:px-10 w-full py-4 flex flex-wrap items-center gap-x-6 gap-y-2 border-b" style="border-color: var(--color-border);">
+      <span v-if="project.projectType" class="text-[13px]" style="color: var(--color-text-3);">
+        {{ t('common.projectType') }}: {{ locale === 'zh' ? project.projectType : (project.projectTypeEn || project.projectType) }}
+      </span>
+      <span v-if="project.completionDate" class="text-[13px]" style="color: var(--color-text-3);">
+        {{ t('common.completionDate') }}: {{ project.completionDate }}
+      </span>
+      <span v-if="project.codeLines" class="text-[13px]" style="color: var(--color-text-3);">
+        {{ t('common.codeLines') }}: {{ project.codeLines.toLocaleString() }}
+      </span>
+      <span v-if="project.dataScale" class="text-[13px]" style="color: var(--color-text-3);">
+        {{ t('common.dataScale') }}: {{ locale === 'zh' ? project.dataScale : (project.dataScaleEn || project.dataScale) }}
+      </span>
+    </div>
+
     <div class="project-content max-w-[1400px] mx-auto px-6 lg:px-10 w-full py-12 flex flex-col gap-12">
       <div class="flex flex-col gap-4">
         <h2 class="text-xl font-bold" style="font-family: var(--font-display); color: var(--color-text-1);">{{ t('common.demoPreview') }}</h2>

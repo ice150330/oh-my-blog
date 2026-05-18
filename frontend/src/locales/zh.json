@@ -33,13 +33,14 @@
   },
   "projects": {
     "title": "项目集",
-    "subtitle": "个真实项目，从 AI 智能体、数据分析、业务系统到三维仿真，覆盖个人作品全景。",
+    "subtitle": "个真实项目，从 AI 智能体、数据分析、业务系统、算法仿真到数据研究，覆盖个人作品全景。",
     "category": {
       "all": "全部",
       "ai": "AI 智能体",
       "data": "数据分析",
       "business": "业务系统",
       "algo": "算法仿真",
+      "research": "数据研究",
       "meta": "元项目"
     }
   },
@@ -103,6 +104,10 @@
     "techArch": "技术架构",
     "coreHighlights": "核心亮点",
     "review": "复盘与展望",
+    "projectType": "项目类型",
+    "completionDate": "完成时间",
+    "codeLines": "代码行数",
+    "dataScale": "数据规模",
     "demoPreview": "Demo 预览",
     "demoPlaceholder": "iframe 嵌入区域 / 或子项目构建产物",
     "notFound": "未找到",

@@ -2,7 +2,7 @@ export interface Project {
   id: string
   title: string
   titleEn?: string
-  category: 'ai' | 'data' | 'business' | 'algo' | 'meta'
+  category: 'ai' | 'data' | 'business' | 'algo' | 'research' | 'meta'
   tags: string[]
   description: string
   descriptionEn?: string
@@ -21,6 +21,16 @@ export interface Project {
   /** 复盘总结 */
   review?: string
   reviewEn?: string
+  /** 数据规模描述 */
+  dataScale?: string
+  dataScaleEn?: string
+  /** 代码总行数 */
+  codeLines?: number
+  /** 完成时间 */
+  completionDate?: string
+  /** 项目类型：个人开源 / 竞赛 / 毕设 / 课程 / 创业 */
+  projectType?: string
+  projectTypeEn?: string
 }
 
 export interface Article {

@@ -33,13 +33,14 @@
   },
   "projects": {
     "title": "Projects",
-    "subtitle": " real projects spanning AI agents, data analysis, business systems, and 3D simulation.",
+    "subtitle": " real projects spanning AI agents, data analysis, business systems, algorithms, and data research.",
     "category": {
       "all": "All",
       "ai": "AI Agents",
       "data": "Data Analysis",
       "business": "Business Systems",
       "algo": "Algorithms",
+      "research": "Data Research",
       "meta": "Meta"
     }
   },
@@ -103,6 +104,10 @@
     "techArch": "Technical Architecture",
     "coreHighlights": "Core Highlights",
     "review": "Retrospective & Outlook",
+    "projectType": "Project Type",
+    "completionDate": "Completion",
+    "codeLines": "Code Lines",
+    "dataScale": "Data Scale",
     "demoPreview": "Demo Preview",
     "demoPlaceholder": "iframe embed area / or sub-project build output",
     "notFound": "Not Found",

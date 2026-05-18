@@ -2,7 +2,7 @@
 import { categoryLabels } from '@/data/projects'
 
 defineProps<{
-  category: 'ai' | 'data' | 'business' | 'algo' | 'meta'
+  category: 'ai' | 'data' | 'business' | 'algo' | 'research' | 'meta'
 }>()
 
 const colorMap: Record<string, string> = {
@@ -10,6 +10,7 @@ const colorMap: Record<string, string> = {
   data: '#8B5CF6',
   business: '#06B6D4',
   algo: '#F97316',
+  research: '#A855F7',
   meta: '#71717A',
 }
 </script>

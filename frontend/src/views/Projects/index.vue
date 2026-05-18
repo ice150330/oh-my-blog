@@ -13,13 +13,14 @@ const { t, locale } = useI18n()
 
 const categories = computed(() => {
   const labels = locale.value === 'zh' ? categoryLabels : categoryLabelsEn
+  const entries = Object.entries(labels).map(([key, label]) => ({
+    key,
+    label,
+    count: projects.filter(p => p.category === key).length,
+  }))
   return [
     { key: 'all', label: t('projects.category.all'), count: projects.length },
-    { key: 'ai', label: labels.ai, count: projects.filter(p => p.category === 'ai').length },
-    { key: 'data', label: labels.data, count: projects.filter(p => p.category === 'data').length },
-    { key: 'business', label: labels.business, count: projects.filter(p => p.category === 'business').length },
-    { key: 'algo', label: labels.algo, count: projects.filter(p => p.category === 'algo').length },
-    { key: 'meta', label: labels.meta, count: projects.filter(p => p.category === 'meta').length },
+    ...entries,
   ]
 })
 
