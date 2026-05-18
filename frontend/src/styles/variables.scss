@@ -58,12 +58,12 @@
 :root {
   --starfield-base: linear-gradient(180deg, #E0F2FE 0%, #E8F4FD 25%, #EFF6FF 50%, #F5FAFF 75%, #F0F5FA 100%);
   --starfield-sm-color: rgba(147, 197, 253, 0.35);
-  --starfield-lg-color: rgba(255, 255, 255, 0.45);
+  --starfield-lg-color: rgba(96, 165, 250, 0.55);
 }
 [data-theme='dark'] {
   --starfield-base: linear-gradient(180deg, #020617 0%, #0B1120 25%, #0F172A 50%, #131D2E 75%, #162036 100%);
   --starfield-sm-color: rgba(255, 255, 255, 0.6);
-  --starfield-lg-color: rgba(191, 219, 254, 0.85);
+  --starfield-lg-color: rgba(255, 255, 255, 0.85);
 }
 
 // -------------------- Primary Opacity Scale --------------------

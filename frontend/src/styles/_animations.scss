@@ -38,6 +38,18 @@
   50% { transform: translateY(-6px); }
 }
 
+// 星星闪烁 - 小星星层
+@keyframes twinkle-sm {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.25; }
+}
+
+// 星星闪烁 - 大星星层
+@keyframes twinkle-lg {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+
 // ==================== Utility Classes ====================
 
 .animate-pulse-glow {
@@ -79,6 +91,7 @@
   height: 1px;
   color: var(--starfield-sm-color);
   background: transparent;
+  animation: twinkle-sm 4s ease-in-out infinite alternate;
   box-shadow:
     5vw 8vh, 12vw 3vh, 18vw 15vh, 25vw 6vh, 32vw 20vh,
     38vw 10vh, 45vw 25vh, 52vw 5vh, 58vw 18vh, 65vw 30vh,
@@ -101,6 +114,7 @@
   border-radius: 50%;
   color: var(--starfield-lg-color);
   background: transparent;
+  animation: twinkle-lg 6s ease-in-out infinite alternate;
   box-shadow:
     8vw 12vh 1px -0.5px, 20vw 8vh 0 0, 35vw 22vh 1px -0.5px,
     48vw 15vh 0 0, 60vw 28vh 1px -0.5px, 75vw 10vh 0 0,
@@ -119,6 +133,11 @@
   .animate-spin-slow,
   .animate-flow-light,
   .animate-float {
+    animation: none !important;
+  }
+
+  .starfield-bg::before,
+  .starfield-bg::after {
     animation: none !important;
   }
 }
