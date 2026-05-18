@@ -72,13 +72,32 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="max-w-[1400px] mx-auto px-6 lg:px-10 py-20">
-    <div class="projects-header mb-8">
-      <SectionTitle en="Projects" :zh="t('projects.title')" />
-      <p class="text-[15px] leading-relaxed mt-3 max-w-[760px]" style="color: var(--color-text-2);">
-        {{ projects.length }}{{ t('projects.subtitle') }}
-      </p>
-    </div>
+  <div>
+    <!-- Hero Banner -->
+    <section
+      class="relative flex flex-col justify-center gap-4 min-h-[280px] md:min-h-[320px] px-6 overflow-hidden"
+      style="background: radial-gradient(ellipse at 80% 20%, var(--mesh-tint-1), var(--color-bg) 70%);"
+    >
+      <div class="max-w-[1400px] mx-auto w-full px-6 lg:px-10 relative z-10">
+        <div class="projects-header">
+          <SectionTitle en="Projects" :zh="t('projects.title')" />
+          <p class="text-[15px] leading-relaxed mt-3 max-w-[680px]" style="color: var(--color-text-2);">
+            {{ projects.length }}{{ t('projects.subtitle') }}
+          </p>
+        </div>
+      </div>
+      <!-- 装饰模糊圆 -->
+      <div
+        class="absolute -top-20 -right-20 w-[320px] h-[320px] rounded-full opacity-30 blur-3xl pointer-events-none"
+        style="background: var(--mesh-tint-2);"
+      ></div>
+      <div
+        class="absolute -bottom-16 -left-16 w-[240px] h-[240px] rounded-full opacity-20 blur-3xl pointer-events-none"
+        style="background: var(--mesh-tint-1);"
+      ></div>
+    </section>
+
+    <div class="max-w-[1400px] mx-auto px-6 lg:px-10 py-12">
 
     <div class="flex flex-wrap gap-3 mb-8">
       <button
@@ -136,5 +155,6 @@ onUnmounted(() => {
         </div>
       </div>
     </div>
+  </div>
   </div>
 </template>
