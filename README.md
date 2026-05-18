@@ -1,150 +1,105 @@
 # Oh My Blog
 
-> 基于光影设计语言的个人作品集与博客系统 —— 展示全栈技术能力、项目经历与专业文章。
+> 基于光影设计语言的个人作品集与博客站点 —— 展示全栈技术能力、项目经历与专业文章。
 
-[//]: # "screenshot-placeholder"
-
----
-
-## ✨ 项目介绍
+## 项目介绍
 
 `oh-my-blog` 是一个现代化的个人博客与作品集站点，采用**光影设计语言**（Light & Shadow Design System），融合玻璃拟态、霓虹光晕与细腻阴影，打造沉浸式的阅读与浏览体验。
 
-**当前版本**：V1.0（基础版本）
+**当前版本**：V3.0（Vue 3 + Vite 纯静态前端）
 
 **核心特性**：
-- 🎨 光影设计系统 —— 玻璃拟态 UI + 暗色/亮色主题切换
-- 📝 Markdown 博客文章 —— 后端驱动，支持标签筛选与归档
-- 🚀 项目展示 —— 技术栈标签 + iframe Demo 演示
-- 📊 实时访客统计 —— SSE 在线人数 + PV/UV 统计
-- 🔐 JWT 管理员认证 —— Spring Security + RBAC
 
----
+- 光影设计系统 —— 玻璃拟态 UI + 暗色/亮色主题切换
+- 12 个真实项目展示 —— 技术栈标签 + 详细项目复盘
+- 8 篇技术文章 —— 涵盖 AI 工程、数据可视化、算法仿真等方向
+- 双语切换 —— 中文/英文完整国际化
+- 细腻动画 —— GSAP ScrollTrigger 滚动触发动画 + 页面过渡动画
+- 响应式布局 —— 覆盖桌面端与移动端场景
 
-## 🛠 技术栈
+## 技术栈
 
-### 前端
 | 技术 | 版本 | 说明 |
-|------|------|------|
-| Nuxt 3 | ^3.21 | Vue 生态、SSG/SSR/Nitro |
-| Vue 3 | ^3.5 | 组合式 API |
-| TypeScript | ^5.9 | 全项目类型安全 |
+| ---- | ---- | ---- |
+| Vue | ^3.5 | 组合式 API，单文件组件 |
+| Vite | ^8.0 | 构建工具 |
+| TypeScript | ~6.0 | 全项目类型安全 |
+| Vue Router | ^4.6 | 前端路由 |
+| Pinia | ^3.0 | 状态管理（主题/语言持久化） |
+| Vue I18n | ^9.14 | 双语切换 |
 | Tailwind CSS | ^3.4 | 原子化样式 |
-| SCSS / Sass | ^1.99 | 全局样式层（7 文件架构）|
-| Pinia | ^2.3 | 状态管理（主题持久化）|
-| @nuxt/content | ^2.13 | Markdown 内容渲染 |
+| Sass | ^1.99 | 全局样式层 |
+| GSAP | ^3.15 | 动画与滚动触发 |
 
-### 后端
-| 技术 | 版本 | 说明 |
-|------|------|------|
-| Java 17 | LTS | 运行时 |
-| Spring Boot | ^3.2.5 | 主框架 |
-| MyBatis Plus | ^3.5.5 | ORM + 分页 |
-| Spring Security | ^6.2 | JWT 认证 |
-| JJWT | 0.12.5 | JWT 实现 |
+## 快速开始
 
-### 中间件
-| 技术 | 用途 |
-|------|------|
-| MySQL 8.0 | 主数据库 |
-| Redis | 缓存、访客会话、SSE 管理 |
+### 环境要求
 
----
+- Node.js 18+
+- npm
 
-## 🚀 快速开始
-
-### 环境准备
-
-1. **MySQL 8.0**（端口 3306，账号 `root` / `123456`）
-2. **Redis**（端口 6379，Windows 可使用 Memurai）
-3. **Java 17** + **Maven 3.9**
-4. **Node.js 18** + **pnpm**
-
-### 数据库初始化
-
-```bash
-# 首次启动前执行建表脚本
-mysql -u root -p < backend/src/main/resources/db/init.sql
-```
-
-### 启动后端
-
-```bash
-cd backend
-mvn spring-boot:run -Dspring-boot.run.profiles=dev
-```
-
-- 健康检查：http://localhost:8080/api/v1/health
-- Swagger UI：http://localhost:8080/swagger-ui.html
-
-### 启动前端
+### 启动开发服务器
 
 ```bash
 cd frontend
-pnpm install
-pnpm run dev
+npm install
+npm run dev
 ```
 
-- 开发服务器：http://localhost:3000
+开发服务器：<http://localhost:5173>
 
----
+### 生产构建
 
-## 📁 项目结构
-
+```bash
+cd frontend
+npm run build
 ```
+
+构建产物输出至 `frontend/dist/`。
+
+> 部署到静态服务器时需要配置 SPA fallback（所有路由指向 `index.html`），因为项目使用 `createWebHistory()` 路由模式。
+
+## 项目结构
+
+```text
 oh-my-blog/
-├── backend/              # Spring Boot 后端
-│   ├── src/main/java/    # 控制器、服务、实体、Mapper
-│   ├── src/main/resources/
-│   │   ├── db/init.sql   # 数据库初始化
-│   │   └── mapper/       # MyBatis XML
-│   └── pom.xml
-├── frontend/             # Nuxt 3 前端
-│   ├── components/       # Vue 组件（layout/ui）
-│   ├── composables/      # API 封装（useApi.ts）
-│   ├── pages/            # 文件路由
-│   ├── styles/           # 光影设计系统（7 文件架构）
-│   └── nuxt.config.ts
-├── docs/plan/            # 6 份阶段规划文档
-├── docker-compose.yml    # 生产环境编排
+├── frontend/              # Vue 3 + Vite 前端
+│   ├── src/
+│   │   ├── views/         # 页面级组件
+│   │   ├── components/    # 可复用组件（layout/ui）
+│   │   ├── data/          # 静态数据（projects.ts / articles.ts / techStack.ts）
+│   │   ├── composables/   # 组合式函数
+│   │   ├── stores/        # Pinia 状态管理
+│   │   ├── locales/       # 国际化文案
+│   │   ├── router/        # 路由配置
+│   │   ├── types/         # TypeScript 类型定义
+│   │   └── styles/        # SCSS 全局样式
+│   ├── index.html
+│   ├── vite.config.ts
+│   └── package.json
+├── docs/plan/             # 阶段规划文档
+├── AGENTS.md              # AI 编码代理指南
+├── CLAUDE.md              # Claude Code 工作指南
 └── README.md
 ```
 
----
+## 内容来源
 
-## 📡 API 概览
+所有项目、文章、技术栈数据均来自 `frontend/src/data/` 目录的静态 TypeScript 文件：
 
-| 端点 | 方法 | 功能 |
-|------|------|------|
-| `/api/v1/health` | GET | 健康检查 |
-| `/api/v1/articles` | GET | 文章列表分页 |
-| `/api/v1/articles/{slug}` | GET | 文章详情（自动+1阅读量）|
-| `/api/v1/articles/tags` | GET | 标签云 |
-| `/api/v1/projects` | GET | 项目列表分页 |
-| `/api/v1/projects/{slug}` | GET | 项目详情 |
-| `/api/v1/techstack` | GET | 技术栈分组 |
-| `/api/v1/visitor/sse` | GET | SSE 实时在线人数 |
-| `/api/v1/visitor/pv` | POST | 记录页面浏览量 |
-| `/api/v1/visitor/total` | GET | 总访问统计 |
-| `/api/v1/admin/login` | POST | 管理员登录（JWT）|
+- `projects.ts` — 12 个真实项目数据（含中英双语字段）
+- `articles.ts` — 8 篇技术文章
+- `techStack.ts` — 技能评分、技术分类、时间线、统计数据
 
----
+更新内容时直接修改对应数据文件并重新构建即可。
 
-## 🗺 路线图
+## 设计系统
 
-- [x] 基础前后端框架搭建
-- [x] 光影设计系统实现
-- [x] 核心页面开发（首页/博客/项目/关于/联系）
-- [x] 后端 REST API + JWT 认证
-- [x] 前后端 API 对接
-- [ ] 管理后台界面
-- [ ] 评论系统
-- [ ] RSS 订阅
-- [ ] Lighthouse 性能优化
-- [ ] CI/CD 自动化部署
+- **设计 Token**：`frontend/src/styles/variables.scss`
+- **主题切换**：CSS 变量 + `data-theme` 属性（light / dark）
+- **动画策略**：GSAP ScrollTrigger 用于滚动触发，CSS transition 用于页面切换
+- **无障碍**：支持 `prefers-reduced-motion: reduce`
 
----
-
-## 📄 许可证
+## 许可证
 
 [MIT](LICENSE)
