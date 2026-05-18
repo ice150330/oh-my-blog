@@ -153,18 +153,18 @@ onUnmounted(() => {
             用 ECharts 与 D3 把复杂数据讲清楚
           </p>
         </div>
-        <div class="flex flex-col gap-3">
+        <div class="intro-card flex flex-col gap-3 transition-transform duration-300 hover:-translate-y-1">
           <IconBadge icon="brain-circuit" />
           <h3 class="text-base font-semibold" style="color: var(--color-text-1);">AI 工程</h3>
           <p class="text-[13px] leading-relaxed" style="color: var(--color-text-2);">
             RAG、Agent 与 LLM 应用落地实践
           </p>
         </div>
-        <div class="flex flex-col gap-3">
+        <div class="intro-card flex flex-col gap-3 transition-transform duration-300 hover:-translate-y-1">
           <IconBadge icon="code" />
           <h3 class="text-base font-semibold" style="color: var(--color-text-1);">全栈开发</h3>
           <p class="text-[13px] leading-relaxed" style="color: var(--color-text-2);">
-            Nuxt 3、Spring Boot 与现代工程化体系
+            Vue 3、FastAPI 与现代工程化体系
           </p>
         </div>
       </div>
